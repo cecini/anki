@@ -62,7 +62,7 @@ DEPS := .build/tools .build/vernum ../meta/buildhash \
 .build/develop: $(DEPS)
 	touch ../proto/backend.proto
 	${BUILD_VARIABLES} \
-		maturin develop $(DEVFLAGS)
+		maturin develop --cargo-extra-args='-vv' $(DEVFLAGS)
 	touch $@
 
 build: .build/build

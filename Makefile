@@ -53,7 +53,9 @@ DEVFLAGS :=
 RUNFLAGS :=
 CHECKABLE_PY := pylib qt
 CHECKABLE_RS := rslib rspy
+CHECKABLE_SYNC := rslib rspy pylib
 DEVEL := rslib rspy pylib ts qt
+DEVELSYNC := rslib rspy pylib 
 
 .PHONY: all
 all: run
@@ -79,6 +81,23 @@ pyenv:
 		python -m pip install -r qt/requirements.qt; \
 	fi;
 
+
+pyenvsync:
+# 	https://github.com/PyO3/maturin/issues/283 - Expected `python` to be a python interpreter inside a virtualenv
+	set -eu -o pipefail ${SHELLFLAGS}; \
+	"${PYTHON_BIN}" -m venv pyenv; \
+	case "$$(uname -s)" in CYGWIN*|MINGW*|MSYS*) \
+		dos2unix "${ACTIVATE_SCRIPT}"; \
+		VIRTUAL_ENV="$$(pwd)"; \
+		VIRTUAL_ENV="$$(cygpath -m "$${VIRTUAL_ENV}")"; \
+		sed -i -- "s@VIRTUAL_ENV=\".*\"@VIRTUAL_ENV=\"$$(pwd)/pyenv\"@g" "${ACTIVATE_SCRIPT}"; \
+		sed -i -- "s@export PATH@export PATH; VIRTUAL_ENV=\"$${VIRTUAL_ENV}/pyenv\";@g" "${ACTIVATE_SCRIPT}"; \
+		;; esac; \
+	. "${ACTIVATE_SCRIPT}"; \
+	python --version; \
+	python -m pip install --upgrade pip setuptools
+
+
 # update build hash
 .PHONY: buildhash
 buildhash:
@@ -94,6 +113,14 @@ develop: pyenv buildhash prepare
 	@set -eu -o pipefail ${SHELLFLAGS}; \
 	. "${ACTIVATE_SCRIPT}"; \
 	for dir in $(DEVEL); do \
+		$(SUBMAKE) -C $$dir develop DEVFLAGS="$(DEVFLAGS)"; \
+	done
+
+.PHONY: developsync
+developsync: pyenvsync buildhash prepare
+	@set -eu -o pipefail ${SHELLFLAGS}; \
+	. "${ACTIVATE_SCRIPT}"; \
+	for dir in $(DEVELSYNC); do \
 		$(SUBMAKE) -C $$dir develop DEVFLAGS="$(DEVFLAGS)"; \
 	done
 
@@ -118,6 +145,11 @@ qt/po/repo:
 build: clean-dist build-ts build-rspy build-pylib build-qt add-buildhash
 	@echo
 	@echo "Build complete."
+
+.PHONY: buildsync
+buildsync: clean-dist  build-rspy build-pylib add-buildhash
+	@echo
+	@echo "Buildsync complete."
 
 .PHONY: build-ts
 build-ts:
@@ -163,6 +195,18 @@ check: pyenv buildhash prepare
 	done;
 	@echo
 	@echo "All checks passed!"
+
+.PHONY: checksync
+checksync: pyenvsync buildhash prepare
+	@set -eu -o pipefail ${SHELLFLAGS}; \
+	.github/scripts/trailing-newlines.sh; \
+	. "${ACTIVATE_SCRIPT}"; \
+	for dir in $(CHECKABLE_SYNC); do \
+		$(SUBMAKE) -C $$dir check; \
+	done;
+	@echo
+	@echo "All checks passed!"
+
 
 .PHONY: fix
 fix: develop

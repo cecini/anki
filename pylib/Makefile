@@ -23,7 +23,7 @@ endif
 
 .DELETE_ON_ERROR:
 .SUFFIXES:
-BLACKARGS := -t py36 anki tests setup.py tools/*.py --exclude='_pb2|buildinfo|_gen'
+BLACKARGS := -t py39 anki tests setup.py tools/*.py --exclude='_pb2|buildinfo|_gen'
 ISORTARGS := --profile black anki tests setup.py
 
 $(shell mkdir -p .build ../dist)
@@ -36,7 +36,7 @@ all: check
 	@touch $@
 
 .build/dev-deps: requirements.dev
-	python -m pip install -r requirements.dev
+	python -m pip install -r requirements.dev --no-binary regex,typed-ast,black 
 	@touch $@
 
 PROTODEPS := ../proto/backend.proto ../proto/fluent.proto
@@ -46,12 +46,12 @@ PROTODEPS := ../proto/backend.proto ../proto/fluent.proto
 	perl -i'' -pe 's/from fluent_pb2/from anki.fluent_pb2/' anki/backend_pb2.pyi
 	perl -i'' -pe 's/import fluent_pb2/import anki.fluent_pb2/' anki/backend_pb2.py
 	python tools/genbackend.py
-	python -m black -t py36 anki/rsbackend_gen.py
+	python -m black -t py39 anki/rsbackend_gen.py
 	@touch $@
 
 .build/hooks: tools/genhooks.py tools/hookslib.py
 	python tools/genhooks.py
-	python -m black -t py36 anki/hooks.py
+	python -m black -t py39 anki/hooks.py
 	@touch $@
 
 BUILD_STEPS := .build/vernum .build/run-deps .build/dev-deps anki/buildinfo.py .build/py-proto .build/hooks

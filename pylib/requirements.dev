@@ -1,7 +1,10 @@
 wheel
+typed-ast
 mypy
 mypy_protobuf>=1.21
-black>=20.1b0
+regex
+#black>=20.1b0
+git+https://github.com/psf/black.git@master#egg=black
 pytest>=6.0.1
 pylint>=2.6.0
 isort>=5.4.2

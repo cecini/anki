@@ -77,8 +77,17 @@ pyenv:
 	python --version; \
 	python -m pip install --upgrade pip setuptools; \
 	${ANKI_EXTRA_PIP}; \
-	if ! python -c 'import PyQt5' 2>/dev/null; then \
-		python -m pip install -r qt/requirements.qt; \
+	if ! python -c 'import PyQt5' 2>/dev/null; then \	
+	    which qmake;\
+		python -m pip install -v -r qt/requirements.qt --no-binary :all: -i https://pypi.tuna.tsinghua.edu.cn/simple; \
+	    wget https://files.pythonhosted.org/packages/6f/8a/b7c05d582764a92b031f3f2575faf61a43da76218578bf1f9720d63241b6/PyQtWebEngine-5.15.1.tar.gz; \
+	    tar xvf PyQtWebEngine-5.15.1.tar.gz; \
+		wget https://files.pythonhosted.org/packages/1d/31/896dc3dfb6c81c70164019a6cbba6ab037e3af7653d9ca60ccc874ee4c27/PyQt5-5.15.1.tar.gz
+		tar xvf PyQt5-5.15.1.tar.gz; \
+		cd PyQt5-5.15.1; \
+		sip-install --verbose --debug --tracing --qmake /usr/local/bin/qmake; \
+        cd ../PyQtWebEngine-5.15.1; \
+		sip-install --verbose --debug --tracing --qmake /usr/local/bin/qmake; \
 	fi;
 
 

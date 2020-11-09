@@ -3,6 +3,8 @@ set -x
 CI_BUILD=$1
 CORE_COUNT=$2
 TAIL_LINECOUNT=500
+export PATH=/usr/bin:$PATH 
+which python
 if [ "$CI_BUILD" = 2 ]; then
 	echo "Suppressing all make output for CI environments to decrease log size..."
 	make -j${CORE_COUNT} > /dev/null 2>&1

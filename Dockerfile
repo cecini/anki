@@ -161,7 +161,7 @@ ARG QT_VERSION_MAJOR=5
 ARG QT_VERSION_MINOR=15
 ARG QT_VERSION_PATCH=1
 
-ENV QT_BUILD_ROOT=/tmp/qt_build
+ENV QT_BUILD_ROOT=/workspaces/qt_build
 
 # They switched the tarball naming scheme from 5.9 to 5.10. This ARG shall provide a possibility to reflect that
 ARG QT_TARBALL_NAMING_SCHEME=everywhere
@@ -175,7 +175,7 @@ WORKDIR ${QT_BUILD_ROOT}
 
 # Download sources
 ENV HTTPS_PROXY=http://192.168.1.227:1088
-RUN curl -sSL https://download.qt.io/${QT_DOWNLOAD_BRANCH}/qt/${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}/${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}/single/qt-${QT_TARBALL_NAMING_SCHEME}-src-${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}.tar.xz | tar xJ
+# RUN curl -sSL https://download.qt.io/${QT_DOWNLOAD_BRANCH}/qt/${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}/${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}/single/qt-${QT_TARBALL_NAMING_SCHEME}-src-${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}.tar.xz | tar xJ
 
 WORKDIR ${QT_BUILD_DIR}
 
@@ -188,17 +188,20 @@ ARG CORE_COUNT=5
 ENV CORE_COUNT=${CORE_COUNT}
 
 # addtianl package 
-RUN apt-get update && apt-get -y --no-install-recommends install libxcomposite-dev libxcursor-dev libxrandr-dev
+RUN apt-get update && apt-get -y --no-install-recommends install libxcomposite-dev libxcursor-dev libxrandr-dev bison build-essential flex gperf gyp khronos-api libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libbz2-dev libcap-dev libclang-dev libcups2-dev libdbus-1-dev libdrm-dev libegl1-mesa-dev libevent-dev libflac-dev libfontconfig1-dev libgl1-mesa-dev libgl1-mesa-dri libglib2.0-dev libglu1-mesa-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libharfbuzz-dev libicu-dev libjpeg-dev libjsoncpp-dev liblcms2-dev libminizip-dev libnss3-dev libopus-dev libpci-dev libpng-dev libprotobuf-dev libpulse-dev libre2-dev libsnappy-dev libsqlite3-dev libssl-dev libudev-dev libusb-1.0-0-dev libvpx-dev libwebp-dev libxcomposite-dev libxcursor-dev libxdamage-dev libxml2-dev libxnvctrl-dev libxrandr-dev libxrender-dev libxslt1-dev libxss-dev libxtst-dev mesa-common-dev ninja-build pkg-config re2c ruby
 
+RUN pip install --no-cache-dir  wheel sip PyQt-builder PyQt5_sip --no-binary sip,PyQt-builder,PyQt5_sip
 
 # Configure, make, install
-ADD buildconfig/configure-${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}.sh configure.sh
+#ADD buildconfig/configure-${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}.sh configure.sh
 # before running the configuration, adding a directory to copy additional contents to the final image
-RUN mkdir /opt/extra-dependencies && chmod +x ./configure.sh && ./configure.sh ${CORE_COUNT} ${CI_BUILD}
+#RUN mkdir /opt/extra-dependencies && chmod +x ./configure.sh && ./configure.sh ${CORE_COUNT} ${CI_BUILD}
 
-COPY buildconfig/build.sh build.sh
+# COPY buildconfig/build.sh build.sh
 #RUN ./build.sh ${CI_BUILD} ${CORE_COUNT}
 #RUN ls -lahR $(QT_BUILD_DIR)
+# sip-wheel build pyqt pyqtwebengine and instatll 
+
 
 
 ## debug build no need install,only local build dir

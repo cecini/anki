@@ -33,6 +33,8 @@ py_binary(
     ],
     visibility = ["//pylib:__subpackages__"],
     deps = [
+        requirement("typed-ast"),
+        requirement("regex"),
         requirement("black"),
         requirement("stringcase"),
         requirement("protobuf"),
@@ -58,6 +60,8 @@ py_binary(
     imports = ["."],
     visibility = ["//pylib:__subpackages__"],
     deps = [
+        requirement("typed-ast"),
+        requirement("regex"),
         requirement("black"),
         requirement("stringcase"),
     ],

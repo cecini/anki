@@ -23,6 +23,7 @@ def register_repos():
     # protobuf
     ############
 
+    # have BUILD
     http_archive(
         name = "com_google_protobuf",
         sha256 = "465fd9367992a9b9c4fba34a549773735da200903678b81b25f367982e8df376",
@@ -128,7 +129,9 @@ def register_repos():
 
     desktop_i18n_po_commit = "710be3864b356ddf90253034c6acfcb420dffeff"
     desktop_i18n_po_shallow_since = "1603966644 +0000"
-
+    
+     
+    # repo no BUILD
     new_git_repository(
         name = "rslib_ftl",
         build_file_content = """

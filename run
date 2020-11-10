@@ -3,7 +3,8 @@
 set -e
 
 run_linux() {
-    bazel run //qt:runanki -- $*
+   # bazel run -s --verbose_explanations=true --verbose_failures=true //qt:runanki -- $*
+    bazel run -s  --verbose_failures=true //qt:runanki -- $*
 }
 
 run_mac() {

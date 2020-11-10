@@ -22,7 +22,7 @@ if __name__ == "__main__":
             "-m",
             "black",
             "-t",
-            "py36",
+            "py39",
             "anki",
             "tests",
             "tools",

@@ -1,11 +1,19 @@
 # See README.md
 
+#black
+# python debug need, this threee need source install,have c ext 
+#typed-ast
+git+https://github.com/python/typed_ast.git@master#egg=typed_ast
+#regex
+#../mrab-regex/dist/regex-2020.10.28-cp39-cp39d-linux_x86_64.whl
+git+https://bitbucket.org/mrabarnett/mrab-regex.git@mater#egg=regex
 appdirs==1.4.4            # via black
 astroid==2.4.2            # via pylint
 atomicwrites==1.4.0 ; sys_platform == "win32"  # via -r requirements.in, pytest
 attrs==20.2.0             # via jsonschema, pytest
 beautifulsoup4==4.9.3     # via -r requirements.in
-black==20.8b1             # via -r requirements.in
+git+https://github.com/psf/black.git@master#egg=black
+#black==20.8b1             # via -r requirements.in
 certifi==2020.6.20        # via requests
 chardet==3.0.4            # via requests
 click==7.1.2              # via black, flask, pip-tools
@@ -41,6 +49,7 @@ pyrsistent==0.17.3        # via jsonschema
 pysocks==1.7.1            # via requests
 pytest==6.1.2             # via -r requirements.in
 pywin32==228 ; sys_platform == "win32"  # via -r requirements.in
+#regex-2020.10.28-cp39-cp39d-linux_x86_64.whl
 regex==2020.10.28         # via black
 requests[socks]==2.24.0   # via -r requirements.in
 send2trash==1.5.0         # via -r requirements.in

@@ -21,11 +21,11 @@ name = "rsbridge"
 crate-type = ["cdylib"]
 path = "lib.rs"
 
-#[profile.dev]
-#opt-level = 2
-#debug = 0
-#codegen-units = 256
+[profile.dev]
+opt-level = 0
+debug = 2
+codegen-units = 256
 
-#[profile.dev.package."*"]
-#opt-level = 3
-#codegen-units = 16
+[profile.dev.package."*"]
+opt-level = 0
+codegen-units = 16

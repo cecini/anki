@@ -26,7 +26,7 @@ def fix_pywin32_in_bazel(force=False):
     os.environ["PATH"] += ";" + path
 
     # import pythoncom module
-    filename = os.path.join(path, "pythoncom38.dll")
+    filename = os.path.join(path, "pythoncom39.dll")
     mod = imp.load_module("pythoncom", None, filename,
                           ('.dll', 'rb', imp.C_EXTENSION))
 

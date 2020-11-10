@@ -20,15 +20,33 @@ rust_library(
             "-Clink-arg=dynamic_lookup",
             "-Clink-arg=-mmacosx-version-min=10.7",
         ],
-        "//conditions:default": [],
+        "//conditions:default": [
+                   "-Ccodegen-units=256", 
+		   "-Cdebug-assertions=yes",
+		   "-Cdebuginfo=2", 
+		   "-Cforce-frame-pointers=yes" ,
+		   "-Cincremental=y",
+		   "-Copt-level=0",
+		   "-Coverflow-checks=y",
+		   "-Cpanic=unwind", 
+		   "-Crpath=no" ,
+		   "-Clto=no",
+		   "-Cforce-unwind-tables=yes",
+			],
+
     }),
     visibility = [
         "//pylib:__subpackages__",
     ],
     deps = [
         ":build_script",
-        "//pylib/rsbridge/cargo:pyo3",
+        # use the raze target
+        #"//pylib/rsbridge/cargo:pyo3",
+	# do need fetch crate??
+        # load("@rules_pyo3_repo//cargo:crates.bzl", "rules_pyo3_fetch_remote_crates")
+        "@rules_pyo3_repo//:pyo3",	
         "//rslib:anki",
+	# not use the Cargo.toml
     ],
 )
 

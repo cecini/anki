@@ -1,0 +1,63 @@
+load("@rules_python//experimental/python:wheel.bzl", "py_package", "py_wheel")
+package(default_visibility = ["//visibility:public"])
+
+licenses(["notice"])  # Apache 2.0
+
+# Package just a specific py_libraries, without their dependencies
+py_wheel(
+    name = "typed_ast_pkg",
+    # Package data. We're building "example_minimal_library-0.0.1-py3-none-any.whl"
+    distribution = "typed_ast",
+    python_tag = "cp39",
+    version = "0.0.1",
+    #deps = [
+    #    "//experimental/examples/wheel/lib:module_with_data",
+    #    "//experimental/examples/wheel/lib:simple_module",
+    #],
+    deps = glob(['*'])
+    #     srcs = glob(['*.java'])
+)
+# place in /workspaces/typed_ast/build/bdist.linux-x86_64/wheel/typed_ast/
+  
+
+
+py_package(
+    name = "typed_ast_pkg",
+    # python package 
+    packages = ["pylib.anki"],
+    # why need this?? dup as above??
+    deps = [":anki"],
+)
+
+# some py_librarys,no depends
+# who use this or for what?
+py_wheel(
+    name = "wheel",
+    abi = "abi3",
+    description_file = "wheel_description.txt",
+    distribution = "anki",
+    platform = select({
+        "//platforms:windows_x86_64": "win_amd64",
+        "//platforms:windows_x86_32": "win32",
+        "//platforms:macos_x86_64": "macosx_10_7_x86_64",
+        "//platforms:linux_x86_64": "manylinux2014_x86_64",
+        "//platforms:linux_x86_32": "manylinux2014_i686",
+    }),
+    python_tag = "cp39",
+    python_version = ">=3.8",
+    requires = [
+        "beautifulsoup4",
+        "requests[socks]",
+        "decorator",
+        "protobuf",
+        'orjson; platform_machine == "x86_64"',
+        'psutil; sys_platform == "win32"',
+        'distro; sys_platform != "darwin" and sys_platform != "win32"',
+    ],
+    strip_path_prefixes = [
+        "pylib",
+    ],
+    version = anki_version,
+    # depend curretn target /label
+    deps = [":anki_pkg"],
+)

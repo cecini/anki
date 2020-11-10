@@ -25,6 +25,7 @@ py_test(
     main = "tests/run_mypy.py",
     deps = [
         "//pylib/anki",
+        requirement("typed-ast"),
         requirement("mypy"),
     ],
 )
@@ -42,6 +43,7 @@ py_test(
     main = "tests/run_pylint.py",
     deps = [
         "//pylib/anki",
+        requirement("typed-ast"),
         requirement("pylint"),
     ],
 )
@@ -59,7 +61,11 @@ py_test(
     ],
     data = [".isort.cfg"],
     main = "tests/run_format.py",
+    # consum pip depend from the pip_import or pip_install
     deps = [
+        requirement("typed-ast"),
+        requirement("regex"),
+        #requirement("git+https://github.com/psf/black.git@master#egg=black"),
         requirement("black"),
         requirement("isort"),
     ],
@@ -77,8 +83,12 @@ py_binary(
     data = [".isort.cfg"],
     main = "tests/run_format.py",
     tags = ["manual"],
+    # consum pip depend from the pip_import or pip_install
     deps = [
+        requirement("typed-ast"),
+        requirement("regex"),
         requirement("black"),
+        #requirement("git+https://github.com/psf/black.git@master#egg=black"),
         requirement("isort"),
     ],
 )

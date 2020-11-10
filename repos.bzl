@@ -27,6 +27,7 @@ def register_repos():
 
     maybe(
         http_archive,
+        # have BUILD
         name = "com_google_protobuf",
 	sha256 = "6dd0f6b20094910fbb7f1f7908688df01af2d4f6c5c21331b9f636048674aebf",
         strip_prefix = "protobuf-3.14.0",
@@ -161,4 +162,17 @@ exports_files(["l10n.toml"])
         commit = qtftl_i18n_commit,
         shallow_since = qtftl_i18n_shallow_since,
         remote = "https://github.com/ankitects/anki-desktop-ftl",
+    )
+
+
+    maybe(
+        native.local_repository,
+	name = "rules_pyo3_repo",
+        path = "/workspaces/rules_pyo3",
+    )
+
+    maybe(
+        native.local_repository,
+	name = "orjson_repo",
+        path = "/workspaces/orjson",
     )

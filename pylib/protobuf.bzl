@@ -35,6 +35,7 @@ py_proto_library_typed = rule(
             cfg = "exec",
             default = Label("//pylib/tools:protoc_wrapper"),
         ),
+	# compiler
         "protoc": attr.label(
             executable = True,
             cfg = "host",

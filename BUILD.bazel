@@ -11,6 +11,7 @@ genrule(
     name = "buildinfo",
     srcs = ["//:defs.bzl"],
     outs = ["buildinfo.txt"],
+    # use main  workspace, not always the local anki workspace ,so the stable-status maybe be empty
     cmd = select({
         "release": "$(location //scripts:buildinfo) $(location //:defs.bzl) bazel-out/stable-status.txt release > $@",
         "//conditions:default": "$(location //scripts:buildinfo) $(location //:defs.bzl) bazel-out/stable-status.txt devel > $@",

@@ -10,12 +10,22 @@ description = "Anki's Rust library code Python bindings"
 anki = { path = "../../rslib" }
 
 # /cargo/update.py needs to be run if updating the version below
-[dependencies.pyo3]
-git = "https://github.com/PyO3/pyo3.git"
-rev = "92b7a9736c9585883df5ec5bc01004caa7f65106"
-features = ["extension-module", "abi3"]
+#[dependencies.pyo3]
+#git = "https://github.com/PyO3/pyo3.git"
+#rev = "92b7a9736c9585883df5ec5bc01004caa7f65106"
+#features = ["extension-module", "nightly"]
+# now only not put the dep here, put dep in repos.def using rules_pyo3 
 
 [lib]
 name = "rsbridge"
 crate-type = ["cdylib"]
 path = "lib.rs"
+
+[profile.dev]
+opt-level = 0
+debug = 2
+codegen-units = 256
+
+[profile.dev.package."*"]
+opt-level = 0
+codegen-units = 16

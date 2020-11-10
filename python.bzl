@@ -3,6 +3,7 @@ def _impl(rctx):
     names = [
         # prefer 3.8 over 3.9, as pylint currently fails on 3.9
         # (due to issues like https://github.com/PyCQA/pylint/pull/3890)
+	"python3.9",
         "python3.8",
         "python3",
         "python.exe",
@@ -16,6 +17,9 @@ def _impl(rctx):
     if not path:
         fail("python3 or python.exe not found on path")
 
+    #path = "/usr/local/python39release/bin/python3.9"
+    #path = "/usr/local/python39valgrind/bin/python3.9"
+    #path = "/usr/local/python39valgrindwithdebug/bin/python3.9"
     rctx.symlink(path, "python")
     rctx.file("BUILD.bazel", """
 load("@rules_python//python:defs.bzl", "py_runtime_pair")

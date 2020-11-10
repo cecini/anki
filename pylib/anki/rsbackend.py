@@ -21,7 +21,7 @@ import json
 import os
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Sequence, Union
-
+#import pdb;pdb.set_trace()
 import orjson
 
 import anki._rsbridge
@@ -53,6 +53,7 @@ SyncOutput = pb.SyncCollectionOut
 SyncStatus = pb.SyncStatusOut
 CountsForDeckToday = pb.CountsForDeckTodayOut
 
+#import pdb; pdb.set_trace()
 to_json_bytes = orjson.dumps
 from_json_bytes = orjson.loads
 
@@ -225,7 +226,13 @@ class RustBackend(RustBackendGenerated):
 
     def _db_command(self, input: Dict[str, Any]) -> Any:
         try:
-            return from_json_bytes(self._backend.db_command(to_json_bytes(input)))
+            # import pdb; pdb.set_trace()
+            jsonb = to_json_bytes(input)
+            print(jsonb)
+            dbresult = self._backend.db_command(jsonb)
+            fromjb = from_json_bytes(dbresult)
+            return fromjb
+            #return from_json_bytes(self._backend.db_command(to_json_bytes(input)))
         except Exception as e:
             err_bytes = bytes(e.args[0])
         err = pb.BackendError()

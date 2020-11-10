@@ -1,11 +1,25 @@
+# See README.md
+
+#black
+# python debug need, this threee need source install,have c ext 
+#typed-ast
+# cannot have :, but can you httparch
+#git+https://github.com/python/typed_ast.git@master#egg=typed_ast
+#
+#/workspaces/typed_ast/dist/typed_ast-1.4.1-cp39-cp39d-linux_x86_64.whl
+#regex
+#../mrab-regex/dist/regex-2020.10.28-cp39-cp39d-linux_x86_64.whl
+#/workspaces/mrab-regex/dist/regex-2020.10.28-cp39-cp39d-linux_x86_64.whl
+#git+https://bitbucket.org/mrabarnett/mrab-regex.git@mater#egg=regex
 appdirs==1.4.4            # via black
 astroid==2.4.2            # via pylint
 atomicwrites==1.4.0 ; sys_platform == "win32"  # via -r requirements.in, pytest
 attrs==20.3.0             # via jsonschema, pytest
 beautifulsoup4==4.9.3     # via -r requirements.in
-black==20.8b1             # via -r requirements.in
 certifi==2020.12.5        # via requests
 chardet==4.0.0            # via requests
+#git+https://github.com/psf/black.git@master#egg=black
+/workspaces/black/dist/black-20.8b2.dev46+g1d8b4d7-py3-none-any.whl
 click==7.1.2              # via black, flask, pip-tools
 colorama==0.4.4 ; sys_platform == "win32"  # via -r requirements.in, pylint, pytest
 decorator==4.4.2          # via -r requirements.in
@@ -27,13 +41,19 @@ mock==4.0.3               # via -r requirements.in
 mypy-extensions==0.4.3    # via black, mypy
 mypy-protobuf==1.23       # via -r requirements.in
 mypy==0.790               # via -r requirements.in
-orjson==3.4.6             # via -r requirements.in
+#orjson==3.4.6             # via -r requirements.in
 packaging==20.8           # via pytest
+#orjson==3.4.3             # via -r requirements.in
+#/workspaces/orjson/orjson-3.4.3-cp39-cp39d-linux_x86_64.whl
+#/workspaces/orjson/target/wheels/orjson-3.4.3-cp39-cp39d-linux_x86_64.whl
+#/workspaces/orjson/target/wheels/orjson-3.4.3-cp39-cp39d-manylinux2014_x86_64.whl
 pathspec==0.8.1           # via black
 pip-tools==5.4.0          # via -r requirements.in
 pluggy==0.13.1            # via pytest
-protobuf==3.14.0          # via -r requirements.in, mypy-protobuf
 psutil==5.8.0 ; sys_platform == "win32"  # via -r requirements.in
+#protobuf==3.14.0          # via -r requirements.in, mypy-protobuf
+#protobuf==3.13.0          # via -r requirements.in, mypy-protobuf
+/workspaces/pyprotobuf/protobuf-3.13.0/dist/protobuf-3.13.0-py2.py3-none-any.whl
 py==1.10.0                # via pytest
 pylint==2.6.0             # via -r requirements.in
 pyparsing==2.4.7          # via packaging
@@ -41,8 +61,9 @@ pyrsistent==0.17.3        # via jsonschema
 pysocks==1.7.1            # via requests
 pytest==6.2.1             # via -r requirements.in
 pywin32==300 ; sys_platform == "win32"  # via -r requirements.in
-regex==2020.11.13         # via black
 requests[socks]==2.25.1   # via -r requirements.in
+#regex==2020.11.13         # via black
+#regex-2020.10.28-cp39-cp39d-linux_x86_64.whl
 send2trash==1.5.0         # via -r requirements.in
 six==1.15.0               # via astroid, flask-cors, jsonschema, pip-tools, protobuf
 snakeviz==2.1.0           # via -r requirements.in
@@ -50,7 +71,7 @@ soupsieve==2.1            # via beautifulsoup4
 stringcase==1.2.0         # via -r requirements.in
 toml==0.10.2              # via black, pylint, pytest
 tornado==6.1              # via snakeviz
-typed-ast==1.4.1          # via black, mypy
+#typed-ast==1.4.1          # via black, mypy
 typing-extensions==3.7.4.3  # via black, mypy
 urllib3==1.26.2           # via requests
 waitress==2.0.0b1         # via -r requirements.in

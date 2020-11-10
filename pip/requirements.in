@@ -1,5 +1,11 @@
 beautifulsoup4
-black
+#black
+# python debug need, this threee need source install,have c ext 
+typed-ast
+#regex
+../mrab-regex/dist/regex-2020.10.28-cp39-cp39d-linux_x86_64.whl
+git+https://github.com/psf/black.git@master#egg=black
+
 decorator
 distro
 flask

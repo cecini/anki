@@ -3,7 +3,10 @@
 set -e
 
 run_linux() {
-    bazel run $BUILDARGS //qt:runanki -- $*
+   # bazel run -s --verbose_explanations=true --verbose_failures=true //qt:runanki -- $*
+    #PYTHON_SYS_EXECUTABLE=/usr/local/python/bin/python3 bazel run -s  --verbose_failures=true //qt:runanki -- $*
+    #PYTHON_SYS_EXECUTABLE=/usr/local/python/bin/python3 bazel run -s --action_env PYTHON_SYS_EXECUTABLE=/usr/local/python/bin/python3  --verbose_failures=true //qt:runanki -- $*
+    bazel run -s --sandbox_debug  --verbose_failures=true //qt:runanki -- $*
 }
 
 run_mac() {

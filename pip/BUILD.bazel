@@ -1,4 +1,5 @@
 load("@rules_python//python:defs.bzl", "py_binary")
+# self package,but define  repo in the main workspaces defs.bzl
 load("@py_deps//:requirements.bzl", "requirement")
 
 py_binary(

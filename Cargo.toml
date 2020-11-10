@@ -29,8 +29,8 @@ targets = [
 genmode = "Remote"
 default_gen_buildrs = true
 
-[package.metadata.raze.crates.pyo3.'*']
-compile_data_attr = "glob([\"**/*.md\"])"
+#[package.metadata.raze.crates.pyo3.'*']
+#compile_data_attr = "glob([\"**/*.md\"])"
 
 [package.metadata.raze.crates.ring.'*']
 compile_data_attr = "glob([\"src/**/*.der\"])"

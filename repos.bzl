@@ -175,3 +175,16 @@ exports_files(["l10n.toml"])
         ],
         sha256 = qtftl_i18n_zip_csum,
     )
+
+
+    maybe(
+        native.local_repository,
+	name = "rules_pyo3_repo",
+        path = "/workspaces/rules_pyo3",
+    )
+
+    maybe(
+        native.local_repository,
+	name = "orjson_repo",
+        path = "/workspaces/orjson",
+    )

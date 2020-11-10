@@ -11,12 +11,3 @@ licenses([
     "notice",  # See individual crates for specific licenses
 ])
 
-# Aliased targets
-alias(
-    name = "pyo3",
-    actual = "@raze__pyo3__0_13_0//:pyo3",
-    tags = [
-        "cargo-raze",
-        "manual",
-    ],
-)

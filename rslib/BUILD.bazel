@@ -29,6 +29,18 @@ cargo_build_script(
         "//rslib/cargo:fluent_syntax",
         "//rslib/cargo:prost_build",
     ],
+    rustc_flags = ["-Ccodegen-units=256", 
+		   "-Cdebug-assertions=yes",
+		   "-Cdebuginfo=2", 
+		   "-Cforce-frame-pointers=yes" ,
+		   "-Cincremental=y",
+		   "-Copt-level=0",
+		   "-Coverflow-checks=y",
+		   "-Cpanic=unwind", 
+		   "-Crpath=no" ,
+		   "-Clto=no",
+		   "-Cforce-unwind-tables=yes",
+		  ],
 )
 
 # Library
@@ -112,6 +124,18 @@ rust_library(
         "//rslib/cargo:utime",
         "//rslib/cargo:zip",
     ],
+    rustc_flags = ["-Ccodegen-units=256", 
+		   "-Cdebug-assertions=yes",
+		   "-Cdebuginfo=2", 
+		   "-Cforce-frame-pointers=yes" ,
+		   "-Cincremental=y",
+		   "-Copt-level=0",
+		   "-Coverflow-checks=y",
+		   "-Cpanic=unwind", 
+		   "-Crpath=no" ,
+		   "-Clto=no",
+		   "-Cforce-unwind-tables=yes",
+		  ],
 )
 
 # Tests
@@ -176,7 +200,8 @@ $(location :write_fluent_proto) $(location fluent.proto)""",
     ],
     visibility = ["//visibility:public"],
 )
-
+# use the fluent_proto rule to output this src file 
+# no python 
 proto_library(
     name = "fluent_proto_lib",
     srcs = ["fluent.proto"],

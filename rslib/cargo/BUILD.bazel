@@ -166,6 +166,15 @@ alias(
 )
 
 alias(
+    name = "lexical_core",
+    actual = "@raze__lexical_core__0_7_4//:lexical_core",
+    tags = [
+        "cargo-raze",
+        "manual",
+    ],
+)
+
+alias(
     name = "nom",
     actual = "@raze__nom__6_0_1//:nom",
     tags = [

@@ -10,6 +10,9 @@ py_binary(
     visibility = [":__subpackages__"],
     deps = [
         "//pylib/tools:hookslib",
+        requirement("typed-ast"),
+        requirement("regex"),
+        #requirement("git+https://github.com/psf/black.git@master#egg=black"),
         requirement("black"),
         requirement("stringcase"),
     ],
@@ -56,6 +59,7 @@ py_test(
         "//pylib/anki",
         "//qt/aqt:aqt_without_data",
         "@pyqt5//:pkg",
+        requirement("typed-ast"),
         requirement("mypy"),
     ],
 )
@@ -76,6 +80,7 @@ py_test(
     deps = [
         "//pylib/anki",
         "//qt/aqt:aqt_without_data",
+        requirement("typed-ast"),
         requirement("pylint"),
         "@pyqt5//:pkg",
     ],
@@ -93,6 +98,9 @@ py_test(
     main = "tests/run_format.py",
     deps = [
         "//qt/aqt:aqt_without_data",
+        requirement("typed-ast"),
+        requirement("regex"),
+        #requirement("git+https://github.com/psf/black.git@master#egg=black"),
         requirement("black"),
         requirement("isort"),
     ],
@@ -111,7 +119,10 @@ py_binary(
     main = "tests/run_format.py",
     tags = ["manual"],
     deps = [
+        requirement("typed-ast"),
+        requirement("regex"),
         requirement("black"),
+        #requirement("git+https://github.com/psf/black.git@master#egg=black"),
         requirement("isort"),
     ],
 )

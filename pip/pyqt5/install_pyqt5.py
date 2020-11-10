@@ -27,8 +27,14 @@ def _create_nspkg_init(dirpath):
 
 
 def install_package(pkg, directory, pip_args):
+    # first sip-wheel build the debug wheel
+    # then do below 
+
+    # or sip-install the debug pkg, no pkg exist,other config option
+    # or pip source install ,need qmake setting
     """Downloads wheel for a package. Assumes python binary provided has
-    pip and wheel package installed.
+    pip and wheel package installed. have pip and wheel package installed.
+
 
     Args:
         pkg: package name
@@ -39,6 +45,7 @@ def install_package(pkg, directory, pip_args):
         str: path to the wheel file
     """
     pip_args = [
+    #    "--no-binary :all:",
         "--isolated",
         "--disable-pip-version-check",
         "--target",
@@ -48,6 +55,7 @@ def install_package(pkg, directory, pip_args):
         pkg,
     ] + pip_args
     cmd = create_command("install")
+    # install wheel pkg to the dir 
     cmd.main(pip_args)
 
     # need dist-info directory for pkg_resources to be able to find the packages
@@ -104,18 +112,32 @@ def merge_files(root, source):
                 else:
                     shutil.copy2(source_path, target_path)
 
+# pip install wheel 
+# pip install from sdist  need qmake path
+# sip install from sdist 
 def main():
     base = sys.argv[1]
-
+    # pyqt5 have build the wheel debug using sipwheel,src from pip download
+    # pyqtwebengqine 
+    # last two pip --no-binary ,or install by pip 
     packages = [
-       ("pyqt5", "pyqt5==5.15.2"),
-       ("pyqtwebengine", "pyqtwebengine==5.15.2"),
+#       ("pyqt5", "pyqt5==5.15.2"),
+#       ("pyqtwebengine", "pyqtwebengine==5.15.2"),
+       ("pyqt5", "/workspaces/PyQt5-5.15.1/wheelpack/PyQt5-5.15.1-cp39-cp39d-linux_x86_64.whl"),
+       ("pyqtwebengine", "/workspaces/PyQtWebEngine-5.15.1/wheelpack/PyQtWebEngine-5.15.1-cp39-cp39d-linux_x86_64.whl"),
        ("pyqt5-sip", "pyqt5_sip==12.8.1"),
+       ("pyqt-builder", "PyQt-builder==1.5.0"),
+  #     ("typed-ast", "/workspaces/typed_ast/dist/typed_ast-1.4.1-cp39-cp39d-linux_x86_64.whl"),
+  #     ("regex", "/workspaces/mrab-regex/dist/regex-2020.10.28-cp39-cp39d-linux_x86_64.whl"),
+  #     ("black", "/workspaces/black/dist/black-20.8b2.dev46+g1d8b4d7-py3-none-any.whl"),
+       # https://github.com/psf/black.git
     ]
 
     for (name, with_version) in packages:
         # install package in subfolder
         folder = os.path.join(base, "temp")
+        # here sip pyqt5-sip pyqt-builder need pip install --no-cache-dir sip PyQt-builder PyQt5_sip --no-binary sip,PyQt-builder,PyQt5_sip
+
         _pkg = install_package(with_version, folder, [])
         # merge into parent
         merge_files(base, folder)
@@ -124,7 +146,9 @@ def main():
     # add missing py.typed file
     with open(os.path.join(base, "py.typed"), "w") as file:
         pass
-
+    
+    # create an buildfile in wheel 
+    # https://github.com/bazelbuild/rules_python/blob/69f55c10e9a77e334800e6266ab43be0e320fa30/python/pip_install/extract_wheels/lib/bazel.py
     result = """
 load("@rules_python//python:defs.bzl", "py_library")
 
@@ -155,6 +179,7 @@ py_library(
     # clean up
     _cleanup(base, "__pycache__")
 
+    # create  bazel target for the three library,only as one 
     with open(os.path.join(base, "BUILD"), "w") as f:
         f.write(result)
 

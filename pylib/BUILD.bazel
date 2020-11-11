@@ -65,7 +65,8 @@ py_test(
     deps = [
         requirement("typed-ast"),
         requirement("regex"),
-        requirement("git+https://github.com/psf/black.git@master#egg=black"),
+        #requirement("git+https://github.com/psf/black.git@master#egg=black"),
+        requirement("black"),
         requirement("isort"),
     ],
 )
@@ -86,7 +87,8 @@ py_binary(
     deps = [
         requirement("typed-ast"),
         requirement("regex"),
-        requirement("git+https://github.com/psf/black.git@master#egg=black"),
+        requirement("black"),
+        #requirement("git+https://github.com/psf/black.git@master#egg=black"),
         requirement("isort"),
     ],
 )

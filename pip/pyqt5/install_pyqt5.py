@@ -124,9 +124,9 @@ def main():
        ("pyqtwebengine", "/workspaces/PyQtWebEngine-5.15.1/wheelpack/PyQtWebEngine-5.15.1-cp39-cp39d-linux_x86_64.whl"),
        ("pyqt5-sip", "pyqt5_sip==12.8.1"),
        ("pyqt-builder", "PyQt-builder==1.5.0"),
-       ("typed-ast", "/workspaces/typed_ast/dist/typed_ast-1.4.1-cp39-cp39d-linux_x86_64.whl"),
-       ("regex", "/workspaces/mrab-regex/dist/regex-2020.10.28-cp39-cp39d-linux_x86_64.whl"),
-       ("black", "/workspaces/black/dist/black-20.8b2.dev46+g1d8b4d7-py3-none-any.whl"),
+  #     ("typed-ast", "/workspaces/typed_ast/dist/typed_ast-1.4.1-cp39-cp39d-linux_x86_64.whl"),
+  #     ("regex", "/workspaces/mrab-regex/dist/regex-2020.10.28-cp39-cp39d-linux_x86_64.whl"),
+  #     ("black", "/workspaces/black/dist/black-20.8b2.dev46+g1d8b4d7-py3-none-any.whl"),
        # https://github.com/psf/black.git
     ]
 
@@ -176,7 +176,7 @@ py_library(
     # clean up
     _cleanup(base, "__pycache__")
 
-    # create  bazel target for the three library
+    # create  bazel target for the three library,only as one 
     with open(os.path.join(base, "BUILD"), "w") as f:
         f.write(result)
 

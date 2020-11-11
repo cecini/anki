@@ -89,7 +89,7 @@ py_wheel(
     distribution = "aqt",
     homepage = "https://apps.ankiweb.net",
     license = "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
-    python_tag = "py3",
+    python_tag = "cp39",
     python_version = ">=3.8",
     requires = [
         # "pyaudio", # currently off as a pain to install on Windows for code completion

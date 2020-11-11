@@ -13,6 +13,7 @@ load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 load("@com_github_ali5h_rules_pip//:defs.bzl", "pip_import")
 # packagename pip/pyqt5, label start //, @repo, target name is label
 load("//pip/pyqt5:defs.bzl", "install_pyqt5")
+load("@rules_python//python:pip.bzl", "pip_install")
 
 anki_version = "2.1.36"
 
@@ -41,19 +42,42 @@ def setup_deps():
     # need update to pip_install to import depend 
     # the requiremnt .tx use pip-compile 
     # package name pip!!!!!
-    pip_import(
+    # can use as dep requirement()
+    #  pip_import(
+    #      name = "py_deps",
+    #      requirements = "@net_ankiweb_anki//pip:requirements.txt",
+    #      python_runtime = "@python//:python",
+    #	#compile = True,
+    #)
+    # Create a central repo that knows about the dependencies needed for
+    # requirements.txt.
+    pip_install(   # or pip3_import
         name = "py_deps",
         requirements = "@net_ankiweb_anki//pip:requirements.txt",
-        python_runtime = "@python//:python",
-	#compile = True,
+        python_interpreter_target = "@python//:python",
+        timeout = 600,
+        # doc
+        # 
+
     )
+    # pip_import and pip_install not support local wheel package,so how can i 
+    # add depend?
+    # how to http_arch /local repo /git repo / install_pyqt5/ py_wheel(how use)
+    # 1. replicate the install_pyqt5 ,but dup code, first give up
+    # 2. py_wheel
 
     # just add BUILd in the pyqt5 ,not consume.
+    # same as above ,but no install 
     install_pyqt5(
         name = "pyqt5",
         python_runtime = "@python//:python",
     )
 
+   # new_local_repository(
+   #     name = "typedast",
+   #     path = "/workspaces/typed_ast/build/bdist.linux-x86_64/wheel/typed_ast/",
+   #	build_file = "//pip:BUILD.typed_ast",
+   #   ) 
     node_repositories(package_json = ["@net_ankiweb_anki//ts:package.json"])
 
     yarn_install(

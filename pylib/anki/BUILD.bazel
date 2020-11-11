@@ -101,13 +101,17 @@ py_library(
 # selecting just the files within a specific python package
 py_package(
     name = "anki_pkg",
+    # python package 
     packages = ["pylib.anki"],
+    # why need this?? dup as above??
     deps = [":anki"],
 )
 
 # some py_librarys,no depends
+# who use this or for what?
 py_wheel(
     name = "wheel",
+    #abi = "cp39d",
     abi = "abi3",
     description_file = "wheel_description.txt",
     distribution = "anki",
@@ -133,6 +137,7 @@ py_wheel(
         "pylib",
     ],
     version = anki_version,
+    # depend curretn target /label
     deps = [":anki_pkg"],
 )
 

@@ -22,8 +22,8 @@
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash",
-		// "python.pythonPath": "/usr/local/python/bin/python",
-		"python.pythonPath": "/usr/local/python39valgrindwithdebug/bin/python",
+	    "python.pythonPath": "/usr/local/python/bin/python",
+		// "python.pythonPath": "/usr/local/python39valgrindwithdebug/bin/python",
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
 		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
@@ -39,6 +39,30 @@
 
 	},
 	"forwardPorts": [27704, 27700, 27702],
+	"runArgs": [
+		"--cap-add", "ALL",
+		"--privileged",
+			//	"-e", "DISPLAY=${env:DISPLAY}"
+				"-e", "DISPLAY=host.docker.internal:0"
+
+	//			"-v", "/tmp/.X11-unix:/tmp/.X11-unix"
+
+		//		"--memory-swap=15g",
+		//		 "--oom-kill-disable"
+	],
+    "containerEnv": {
+		// "MY_CONTAINER_VAR": "some-value-here",
+		// "MY_CONTAINER_VAR2": "${localEnv:SOME_LOCAL_VAR}"
+//		"DISPLAY": "host.docker.internal:0.0"
+		"DISPLAY": "host.docker.internal:0"
+
+		// "LIBGL_ALWAYS_INDIRECT": "0",
+	},
+	"remoteEnv": {
+		//"DISPLAY": "host.docker.internal:0.0"
+		"DISPLAY": "host.docker.internal:0"
+
+	},
 
 
 	// Add the IDs of extensions you want installed when the container is created.

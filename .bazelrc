@@ -9,6 +9,10 @@ build:windows --action_env="PYTHON_SYS_EXECUTABLE=c:\\python\\python.exe"
 
 build:linux  --action_env="PYO3_PYTHON=/usr/local/python/bin/python3"  --action_env="PYTHONTRACEMALLOC=25" --action_env="PYTHONMALLOCSTATS=1"
 #build:linux  --action_env="PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python" --action_env="PYO3_PYTHON=/usr/local/python39valgrindwithdebug/bin/python3.9" --action_env="PYTHONTRACEMALLOC=25" --action_env="PYTHONMALLOCSTATS=1"
+#$ export DISPLAY=host.docker.internal:0
+# export QTWEBENGINE_DISABLE_SANDBOX=1
+# export XDG_RUNTIME_DIR=/tmp/runtime
+#  export LIBGL_ALWAYS_INDIRECT=0
 # runfiles are off by default on Windows, and we need them
 build --enable_runfiles
 

@@ -43,9 +43,9 @@ def pylib_deps():
     maybe(
         git_repository,
         name = "io_bazel_rules_rust",
-        commit = "18608544c831f6c999f216bb23ca52cf97c04480",
+        commit = "dfd1200fcdcc0d56d725818ed3a66316517f20a6",
         remote = "https://github.com/ankitects/rules_rust",
-        shallow_since = "1606951450 +1000",
+        shallow_since = "1607578413 +1000",
     )
 
     # native.local_repository(
@@ -92,12 +92,12 @@ def pylib_deps():
     # translations
     ################
 
-    core_i18n_commit = "8444a0cb5c4bc9c504f83f68810b4a73b428e244"
-    core_i18n_shallow_since = "1606623876 +0000"
+    core_i18n_commit = "bd14d2c09e8b14123d37ff250ab4f7cca91be50d"
+    core_i18n_shallow_since = "1607126494 +0000"
 
    # for the extra_ftl
-    qtftl_i18n_commit = "e7e257678b82c5636ad6042e39cd8a8adc67dfc2"
-    qtftl_i18n_shallow_since = "1606623844 +0000"
+    qtftl_i18n_commit = "19e28768f4e5ce5ec0cfb8639236a155de7224cf"
+    qtftl_i18n_shallow_since = "1607126485 +0000"
 
     i18n_build_content = """
 filegroup(

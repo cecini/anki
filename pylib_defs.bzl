@@ -1,7 +1,6 @@
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 load("@bazel_skylib//lib:versions.bzl", "versions")
 load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
-load("@io_bazel_rules_rust//:workspace.bzl", "bazel_version")
 load("@net_ankiweb_anki//cargo:crates.bzl", "raze_fetch_remote_crates")
 load(":python.bzl", "setup_local_python")
 #load("@io_bazel_rules_sass//:defs.bzl", "sass_repositories")
@@ -14,7 +13,7 @@ load("@rules_python//python:pip.bzl", "pip_install")
 load("@rules_pyo3_repo//cargo:crates.bzl", "rules_pyo3_fetch_remote_crates")
 load("@orjson_repo//:orjson_defs.bzl", orjson_setup_deps= "setup_deps")
 
-anki_version = "2.1.36"
+anki_version = "2.1.37"
 
 def setup_deps():
     bazel_skylib_workspace()
@@ -30,7 +29,6 @@ def setup_deps():
 	iso_date = "2020-11-25",
     )
 
-    bazel_version(name = "io_bazel_rules_rust_bazel_version")
 
     # get local raze rust depend
     raze_fetch_remote_crates()

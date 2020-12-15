@@ -23,7 +23,7 @@ def setup_deps():
 
     rust_repositories(
         edition = "2018",
-        use_worker = True,
+        #use_worker = True,
         # use_worker = True,
         #version = "1.48.0",
         #version = "1.47.0",
@@ -31,7 +31,6 @@ def setup_deps():
 	iso_date = "2020-11-25",
     )
 
-    bazel_version(name = "io_bazel_rules_rust_bazel_version")
 
     # get local raze rust depend
     raze_fetch_remote_crates()

@@ -391,6 +391,15 @@ alias(
 )
 
 alias(
+    name = "smallvec",
+    actual = "@raze__smallvec__1_5_1//:smallvec",
+    tags = [
+        "cargo-raze",
+        "manual",
+    ],
+)
+
+alias(
     name = "tempfile",
     actual = "@raze__tempfile__3_1_0//:tempfile",
     tags = [

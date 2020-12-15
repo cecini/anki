@@ -8,7 +8,6 @@ use crate::{
 };
 use lazy_static::lazy_static;
 use nom::{
-    error::{Error, ErrorKind},
     branch::alt,
     bytes::complete::{escaped, is_not, tag},
     character::complete::{anychar, char, none_of, one_of},

@@ -378,15 +378,6 @@
     "description": "Trait for Message Authentication Code (MAC) algorithms"
   },
   {
-    "name": "ctor",
-    "version": "0.1.16",
-    "authors": "Matt Mastracci <matthew@mastracci.com>",
-    "repository": "https://github.com/mmastrac/rust-ctor",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "__attribute__((constructor)) for Rust"
-  },
-  {
     "name": "derivative",
     "version": "2.1.1",
     "authors": "mcarton <cartonmartin+git@gmail.com>",
@@ -720,15 +711,6 @@
     "description": "A small cross-platform library for retrieving random data from system source"
   },
   {
-    "name": "ghost",
-    "version": "0.1.2",
-    "authors": "David Tolnay <dtolnay@gmail.com>",
-    "repository": "https://github.com/dtolnay/ghost",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "Define your own PhantomData"
-  },
-  {
     "name": "gimli",
     "version": "0.23.0",
     "authors": "Nick Fitzgerald <fitzgen@gmail.com>|Philip Craig <philipjcraig@gmail.com>",
@@ -909,24 +891,6 @@
     "description": "A hash table with consistent order and fast iteration.  The indexmap is a hash table where the iteration order of the key-value pairs is independent of the hash values of the keys. It has the usual hash table functionality, it preserves insertion order except after removals, and it allows lookup of its elements by either hash table key or numerical index. A corresponding hash set type is also provided.  This crate was initially published under the name ordermap, but it was renamed to indexmap."
   },
   {
-    "name": "indoc",
-    "version": "1.0.3",
-    "authors": "David Tolnay <dtolnay@gmail.com>",
-    "repository": "https://github.com/dtolnay/indoc",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "Indented document literals"
-  },
-  {
-    "name": "instant",
-    "version": "0.1.9",
-    "authors": "sebcrozet <developer@crozet.re>",
-    "repository": "https://github.com/sebcrozet/instant",
-    "license": "BSD-3-Clause",
-    "license_file": null,
-    "description": "A partial replacement for std::time::Instant that works on WASM too."
-  },
-  {
     "name": "intl-memoizer",
     "version": "0.5.0",
     "authors": "Zibi Braniecki <gandalf@mozilla.com>|Manish Goregaokar <manishsmail@gmail.com>",
@@ -943,24 +907,6 @@
     "license": "Apache-2.0 OR MIT",
     "license_file": null,
     "description": "Unicode Plural Rules categorizer for numeric input."
-  },
-  {
-    "name": "inventory",
-    "version": "0.1.10",
-    "authors": "David Tolnay <dtolnay@gmail.com>",
-    "repository": "https://github.com/dtolnay/inventory",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "Typed distributed plugin registration"
-  },
-  {
-    "name": "inventory-impl",
-    "version": "0.1.10",
-    "authors": "David Tolnay <dtolnay@gmail.com>",
-    "repository": "https://github.com/dtolnay/inventory",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "Implementation of macros for the `inventory` crate"
   },
   {
     "name": "iovec",
@@ -1051,15 +997,6 @@
     "license": "MIT",
     "license_file": null,
     "description": "Native bindings to the libsqlite3 library"
-  },
-  {
-    "name": "lock_api",
-    "version": "0.4.2",
-    "authors": "Amanieu d'Antras <amanieu@gmail.com>",
-    "repository": "https://github.com/Amanieu/parking_lot",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "Wrappers to create fully-featured Mutex and RwLock types. Compatible with no_std."
   },
   {
     "name": "log",
@@ -1287,33 +1224,6 @@
     "description": "FFI bindings to OpenSSL"
   },
   {
-    "name": "parking_lot",
-    "version": "0.11.1",
-    "authors": "Amanieu d'Antras <amanieu@gmail.com>",
-    "repository": "https://github.com/Amanieu/parking_lot",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "More compact and efficient implementations of the standard synchronization primitives."
-  },
-  {
-    "name": "parking_lot_core",
-    "version": "0.8.1",
-    "authors": "Amanieu d'Antras <amanieu@gmail.com>",
-    "repository": "https://github.com/Amanieu/parking_lot",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "An advanced API for creating custom synchronization primitives."
-  },
-  {
-    "name": "paste",
-    "version": "1.0.4",
-    "authors": "David Tolnay <dtolnay@gmail.com>",
-    "repository": "https://github.com/dtolnay/paste",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "Macros for all your token pasting needs"
-  },
-  {
     "name": "percent-encoding",
     "version": "2.1.0",
     "authors": "The rust-url developers",
@@ -1492,33 +1402,6 @@
     "license": "Apache-2.0",
     "license_file": null,
     "description": "A Protocol Buffers implementation for the Rust Language."
-  },
-  {
-    "name": "pyo3",
-    "version": "0.12.4",
-    "authors": "PyO3 Project and Contributors <https://github.com/PyO3>",
-    "repository": "https://github.com/pyo3/pyo3",
-    "license": "Apache-2.0",
-    "license_file": null,
-    "description": "Bindings to Python interpreter"
-  },
-  {
-    "name": "pyo3-derive-backend",
-    "version": "0.12.4",
-    "authors": "PyO3 Project and Contributors <https://github.com/PyO3>",
-    "repository": "https://github.com/pyo3/pyo3",
-    "license": "Apache-2.0",
-    "license_file": null,
-    "description": "Code generation for PyO3 package"
-  },
-  {
-    "name": "pyo3cls",
-    "version": "0.12.4",
-    "authors": "PyO3 Project and Contributors <https://github.com/PyO3>",
-    "repository": "https://github.com/pyo3/pyo3",
-    "license": "Apache-2.0",
-    "license_file": null,
-    "description": "Proc macros for PyO3 package"
   },
   {
     "name": "quote",
@@ -2134,7 +2017,7 @@
   },
   {
     "name": "toml",
-    "version": "0.5.7",
+    "version": "0.5.8",
     "authors": "Alex Crichton <alex@alexcrichton.com>",
     "repository": "https://github.com/alexcrichton/toml-rs",
     "license": "Apache-2.0 OR MIT",
@@ -2284,15 +2167,6 @@
     "license": "Apache-2.0 OR MIT",
     "license_file": null,
     "description": "Determine whether characters have the XID_Start or XID_Continue properties according to Unicode Standard Annex #31."
-  },
-  {
-    "name": "unindent",
-    "version": "0.1.7",
-    "authors": "David Tolnay <dtolnay@gmail.com>",
-    "repository": "https://github.com/dtolnay/indoc",
-    "license": "Apache-2.0 OR MIT",
-    "license_file": null,
-    "description": "Remove a column of leading whitespace from a string"
   },
   {
     "name": "untrusted",

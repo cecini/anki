@@ -38,6 +38,7 @@ rust_library(
         "default",
         "humansize",
         "num-traits",
+        "serde-json",
         "urlencode",
     ],
     crate_root = "src/lib.rs",

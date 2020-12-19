@@ -36,6 +36,10 @@ rust_library(
     name = "smallvec",
     srcs = glob(["**/*.rs"]),
     crate_features = [
+        "const_generics",
+        "specialization",
+        "union",
+        "write",
     ],
     crate_root = "src/lib.rs",
     crate_type = "lib",

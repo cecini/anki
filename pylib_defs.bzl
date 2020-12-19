@@ -1,8 +1,11 @@
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 load("@bazel_skylib//lib:versions.bzl", "versions")
-load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
+#load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
 load("@net_ankiweb_anki//cargo:crates.bzl", "raze_fetch_remote_crates")
-load(":python.bzl", "setup_local_python")
+#load(":python.bzl", "setup_local_python")
+#load("@toolchains//:toolchains_defs.bzl", toolchains_setup_deps = "setup_deps")
+load("@toolchains//:toolchains_deps.bzl", toolchains_deps = "toolchains_deps")
+load("@toolchains//:toolchains_defs.bzl", toolchains_setup_debugdeps = "setup_debugdeps", toolchains_setup_releasedeps = "setup_releasedeps")
 #load("@io_bazel_rules_sass//:defs.bzl", "sass_repositories")
 # load the repo ,root dir target(file),s func protobuf-deps
 # whi
@@ -20,22 +23,24 @@ def setup_deps():
 
     #versions.check(minimum_bazel_version = "3.7.0")
 
-    rust_repositories(
-        edition = "2018",
-        # use_worker = True,
-        #version = "1.48.0",
-        #version = "1.47.0",
-        version = "nightly",
-	iso_date = "2020-11-25",
-    )
+    toolchains_deps()
+#    rust_repositories(
+#        edition = "2018",
+#        # use_worker = True,
+#        #version = "1.48.0",
+#        #version = "1.47.0",
+#        version = "nightly",
+#	iso_date = "2020-11-25",
+#    )
 
 
-    # get local raze rust depend
-    raze_fetch_remote_crates()
+#    # get local raze rust depend
+#    raze_fetch_remote_crates()
 
-    setup_local_python(name = "python")
+    #setup_local_python(name = "python")
 
-    native.register_toolchains("@python//:python3_toolchain")
+    #native.register_toolchains("@python//:python3_toolchain")
+    toolchains_setup_debugdeps()
 
     #should place the extension protobuf before the pip install ,
     # offical anki use later setup ,so no need consder this case.

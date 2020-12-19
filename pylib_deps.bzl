@@ -33,12 +33,14 @@ def pylib_deps():
         ],
     )
     
-   # load statement not at top level
-   # load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
-   #  protobuf_deps()
-
+    # this dep should put in the toolchains ,but transitive dep not to add ,we should later add .
     # rust
     ########
+
+    # native.local_repository(
+    #     name = "io_bazel_rules_rust",
+    #     path = "../rules_rust",
+    # )
 
     maybe(
         git_repository,
@@ -48,10 +50,13 @@ def pylib_deps():
         shallow_since = "1607578413 +1000",
     )
 
-    # native.local_repository(
-    #     name = "io_bazel_rules_rust",
-    #     path = "../rules_rust",
-    # )
+    maybe(
+        git_repository,
+        name = "toolchains",
+	commit = "036eb1bee43572d9d20f3b3d5dedb322bf1f2805",
+        remote = "https://github.com/cecini/toolchains.git",
+	#shallow_since = "1608361362 +0000"
+    )
 
     maybe(
         git_repository,
@@ -131,14 +136,26 @@ exports_files(["l10n.toml"])
 #load("//pylib:protobuf.bzl", "py_proto_library_typed")
 #load("//:defs.bzl", "anki_version")
 
+    #maybe(
+    #    native.local_repository,
+    #	name = "rules_pyo3_repo",
+    #    path = "/workspaces/rules_pyo3",
+    #)
     maybe(
-        native.local_repository,
-	name = "rules_pyo3_repo",
-        path = "/workspaces/rules_pyo3",
+        git_repository,
+        name = "rules_pyo3_repo",
+        commit = "751c7f7ee9141d798c44f42b3c57c1d6e4139f5b",
+        remote = "https://github.com/cecini/rules_pyo3",
     )
 
+    #maybe(
+    #    native.local_repository,
+   # 	name = "orjson_repo",
+    #    path = "/workspaces/orjson",
+    #)
     maybe(
-        native.local_repository,
-	name = "orjson_repo",
-        path = "/workspaces/orjson",
+        git_repository,
+        name = "orjson_repo",
+        commit = "6d70a6e6e4fd26acdbebffd473bb7188e8b0cf0c",
+        remote = "https://github.com/cecini/orjson",
     )

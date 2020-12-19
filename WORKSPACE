@@ -5,32 +5,21 @@ workspace(
     ]},
 )
 
-load(":repos.bzl", "register_repos")
+load(":pylib_deps.bzl", "pylib_deps")
+pylib_deps()
 
-register_repos()
+load(":desktop_extradeps.bzl", desktop_extradeps = "register_repos")
+desktop_extradeps()
 
-load(":defs.bzl", "setup_deps")
+load(":pylib_defs.bzl", pylib_setup_deps = "setup_deps")
+pylib_setup_deps()
 
-setup_deps()
-
-load(":late_deps.bzl", "setup_late_deps")
-
-
-##############
-# PyO3 Rules #
-##############
-
-#git_repository(
-#    name = "rules_pyo3",
-#    commit = "304d8974fa41e37e8ad3e32b9cb1221ecc9bb985",
-#    remote = "https://github.com/cecini/rules_pyo3",
-#)
+load(":desktop_extradefs.bzl", desktop_extradefs = "setup_deps")
+desktop_extradefs()
 
 
-#load("@rules_pyo3//cargo:crates.bzl", "rules_pyo3_fetch_remote_crates")
+load(":pylib_late_deps.bzl", pylib_setup_late_deps = "setup_late_deps")
+pylib_setup_late_deps()
 
-#rules_pyo3_fetch_remote_crates()
-
-
-
+load(":desktop_late_deps.bzl", "setup_late_deps")
 setup_late_deps()

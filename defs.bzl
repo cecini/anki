@@ -21,7 +21,7 @@ anki_version = "2.1.39"
 def setup_deps():
     bazel_skylib_workspace()
 
-    versions.check(minimum_bazel_version = "3.7.0")
+    #versions.check(minimum_bazel_version = "3.7.0")
 
     toolchains_deps()
 

@@ -3,11 +3,6 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
-#load("@rules_python//python:pip.bzl", "pip_install")
-
-#def _maybe(rule, name, **kwargs):
-#    if not native.existing_rule(name):
-#        rule(name = name, **kwargs)
 
 
 def pylib_deps():
@@ -73,36 +68,16 @@ def pylib_deps():
         remote = "https://github.com/ankitects/rules_pip",
         shallow_since = "1606453171 +1000",
     )
-#    maybe(
-#        http_archive,
-#        name = "build_bazel_rules_nodejs",
-#        sha256 = "cd6c9880292fc83f1fd16ba33000974544b0fe0fccf3d5e15b2e3071ba011266",
-#        urls = ["https://github.com/ankitects/rules_nodejs/releases/download/runfiles-fix-release/release.tar.gz"],
-#    )
-#
-#    maybe(
-#        http_archive,
-#        name = "io_bazel_rules_sass",
-#        sha256 = "6e60fc1cf0805af2cdcce727a5eed3f238fb4df41b35ce581c57996947c0202c",
-#        strip_prefix = "rules_sass-1.26.12",
-#        url = "https://github.com/bazelbuild/rules_sass/archive/1.26.12.zip",
-#    )
-#    maybe(
-#        git_repository,
-#        name = "build_bazel_rules_svelte",
-#        commit = "c28cd9e5d251a0ce47c68a6a2a11b075f3df8899",
-#        remote = "https://github.com/ankitects/rules_svelte",
-#        shallow_since = "1603950453 +1000",
-#    )
+
     # translations
     ################
 
-    core_i18n_commit = "bd14d2c09e8b14123d37ff250ab4f7cca91be50d"
-    core_i18n_shallow_since = "1607126494 +0000"
+    core_i18n_commit = "8d10e26bd363001d1119147eef8b7aa1cecfa137"
+    core_i18n_shallow_since = "1608250325 +1000"
 
    # for the extra_ftl
-    qtftl_i18n_commit = "19e28768f4e5ce5ec0cfb8639236a155de7224cf"
-    qtftl_i18n_shallow_since = "1607126485 +0000"
+    qtftl_i18n_commit = "50f55f232b3cae3f113ba5a94497a7da76137156"
+    qtftl_i18n_shallow_since = "1608120047 +0000"
 
     i18n_build_content = """
 filegroup(
@@ -131,10 +106,6 @@ exports_files(["l10n.toml"])
         remote = "https://github.com/ankitects/anki-desktop-ftl",
     )
 
-# how add this depend     
-#load("@py_deps//:requirements.bzl", "requirement")
-#load("//pylib:protobuf.bzl", "py_proto_library_typed")
-#load("//:defs.bzl", "anki_version")
 
     #maybe(
     #    native.local_repository,
@@ -144,7 +115,7 @@ exports_files(["l10n.toml"])
     maybe(
         git_repository,
         name = "rules_pyo3_repo",
-        commit = "751c7f7ee9141d798c44f42b3c57c1d6e4139f5b",
+	commit = "4a39ecbab67cf4e2e90a360fc688ed6ea9d35877",
         remote = "https://github.com/cecini/rules_pyo3",
     )
 
@@ -156,6 +127,6 @@ exports_files(["l10n.toml"])
     maybe(
         git_repository,
         name = "orjson_repo",
-        commit = "6d70a6e6e4fd26acdbebffd473bb7188e8b0cf0c",
+	commit = "2ed8462dc28fbb3929a11374af205d71b8d82faf",
         remote = "https://github.com/cecini/orjson",
     )

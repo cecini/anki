@@ -16,12 +16,12 @@ load("@rules_python//python:pip.bzl", "pip_install")
 load("@rules_pyo3_repo//cargo:crates.bzl", "rules_pyo3_fetch_remote_crates")
 load("@orjson_repo//:orjson_defs.bzl", orjson_setup_deps= "setup_deps")
 
-anki_version = "2.1.37"
+anki_version = "2.1.38"
 
 def setup_deps():
     bazel_skylib_workspace()
 
-    #versions.check(minimum_bazel_version = "3.7.0")
+    versions.check(minimum_bazel_version = "3.7.0")
 
     toolchains_deps()
 #    rust_repositories(
@@ -41,6 +41,7 @@ def setup_deps():
 
     #native.register_toolchains("@python//:python3_toolchain")
     toolchains_setup_debugdeps()
+    raze_fetch_remote_crates()
 
     #should place the extension protobuf before the pip install ,
     # offical anki use later setup ,so no need consder this case.

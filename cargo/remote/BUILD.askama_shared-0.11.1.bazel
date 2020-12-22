@@ -69,8 +69,12 @@ rust_library(
         "@raze__syn__1_0_55//:syn",
 =======
         "@raze__serde_json__1_0_60//:serde_json",
+<<<<<<< HEAD
         "@raze__syn__1_0_54//:syn",
 >>>>>>> update cargo depend
+=======
+        "@raze__syn__1_0_55//:syn",
+>>>>>>> update cargo dep
         "@raze__toml__0_5_8//:toml",
     ],
 )

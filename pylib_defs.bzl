@@ -40,7 +40,9 @@ def setup_deps():
     #setup_local_python(name = "python")
 
     #native.register_toolchains("@python//:python3_toolchain")
-    toolchains_setup_debugdeps()
+    #toolchains_setup_debugdeps()
+    #toolchains_setup_debugdeps(pypath = "/Users/baojg/Downloads/code/cpython/python.exe")
+    toolchains_setup_debugdeps(pypath = "/Users/baojg/bin/python310/bin/python")
     raze_fetch_remote_crates()
 
     #should place the extension protobuf before the pip install ,

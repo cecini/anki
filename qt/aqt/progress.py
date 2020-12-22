@@ -42,6 +42,7 @@ class ProgressManager:
         only fire when there is no current progress dialog."""
 
         def handler():
+           # debug()
             if requiresCollection and not self.mw.col:
                 # no current collection; timer is no longer valid
                 print("Ignored progress func as collection unloaded: %s" % repr(func))

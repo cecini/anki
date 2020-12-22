@@ -13,6 +13,10 @@ build:linux  --action_env="PYO3_PYTHON=/usr/local/python/bin/python3"  --action_
 # export QTWEBENGINE_DISABLE_SANDBOX=1
 # export XDG_RUNTIME_DIR=/tmp/runtime
 #  export LIBGL_ALWAYS_INDIRECT=0
+
+# should pass toolchains info to this env var?
+#build:macos --action_env="PYTHON_SYS_EXECUTABLE=/Users/baojg/Downloads/code/cpython/python.exe"  --action_env="PYO3_PYTHON=/Users/baojg/Downloads/code/cpython/python.exe"
+build:macos --action_env="PYTHON_SYS_EXECUTABLE=/Users/baojg/bin/python310/bin/python"  --action_env="PYO3_PYTHON=/Users/baojg/bin/python310/bin/python"
 # runfiles are off by default on Windows, and we need them
 
 # worker config

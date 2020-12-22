@@ -21,12 +21,12 @@ def pylib_deps():
     maybe(
         http_archive,
         name = "com_google_protobuf",
-        sha256 = "465fd9367992a9b9c4fba34a549773735da200903678b81b25f367982e8df376",
-        strip_prefix = "protobuf-3.13.0",
+	sha256 = "6dd0f6b20094910fbb7f1f7908688df01af2d4f6c5c21331b9f636048674aebf",
+        strip_prefix = "protobuf-3.14.0",
         urls = [
-            "https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protobuf-all-3.13.0.tar.gz",
+            "https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/protobuf-all-3.14.0.tar.gz",
         ],
-    )
+    )    
     
     # this dep should put in the toolchains ,but transitive dep not to add ,we should later add .
     # rust
@@ -44,14 +44,18 @@ def pylib_deps():
         remote = "https://github.com/ankitects/rules_rust",
         shallow_since = "1607578413 +1000",
     )
-
-    maybe(
-        git_repository,
+    native.local_repository(
         name = "toolchains",
-	commit = "036eb1bee43572d9d20f3b3d5dedb322bf1f2805",
-        remote = "https://github.com/cecini/toolchains.git",
-	#shallow_since = "1608361362 +0000"
+	path = "../toolchains",
     )
+
+   # maybe(
+   #     git_repository,
+   #     name = "toolchains",
+   #     commit = "036eb1bee43572d9d20f3b3d5dedb322bf1f2805",
+   #     remote = "https://github.com/cecini/toolchains.git",
+   #     #shallow_since = "1608361362 +0000"
+   # )
 
     maybe(
         git_repository,
@@ -106,27 +110,27 @@ exports_files(["l10n.toml"])
         remote = "https://github.com/ankitects/anki-desktop-ftl",
     )
 
-
-    #maybe(
-    #    native.local_repository,
-    #	name = "rules_pyo3_repo",
-    #    path = "/workspaces/rules_pyo3",
-    #)
+    # should set toolchains in the toolchains, not in the repo 
     maybe(
-        git_repository,
-        name = "rules_pyo3_repo",
-	commit = "4a39ecbab67cf4e2e90a360fc688ed6ea9d35877",
-        remote = "https://github.com/cecini/rules_pyo3",
+        native.local_repository,
+    	name = "rules_pyo3_repo",
+        path = "../rules_pyo3",
     )
-
     #maybe(
-    #    native.local_repository,
-   # 	name = "orjson_repo",
-    #    path = "/workspaces/orjson",
+    #    git_repository,
+    #    name = "rules_pyo3_repo",
+    #    commit = "4a39ecbab67cf4e2e90a360fc688ed6ea9d35877",
+    #    remote = "https://github.com/cecini/rules_pyo3",
     #)
+
     maybe(
-        git_repository,
-        name = "orjson_repo",
-	commit = "2ed8462dc28fbb3929a11374af205d71b8d82faf",
-        remote = "https://github.com/cecini/orjson",
+        native.local_repository,
+    	name = "orjson_repo",
+        path = "../orjson",
     )
+   # maybe(
+   #     git_repository,
+   #     name = "orjson_repo",
+   #     commit = "2ed8462dc28fbb3929a11374af205d71b8d82faf",
+   #     remote = "https://github.com/cecini/orjson",
+   # )

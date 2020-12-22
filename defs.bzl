@@ -9,8 +9,9 @@ load("@toolchains//:toolchains_defs.bzl", toolchains_setup_debugdeps = "setup_de
 load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install")
 load("@io_bazel_rules_sass//:defs.bzl", "sass_repositories")
 load("@build_bazel_rules_svelte//:defs.bzl", "rules_svelte_dependencies")
-load("@com_github_ali5h_rules_pip//:defs.bzl", "pip_import")
-# packagename pip/pyqt5, label start //, @repo, target name is label
+# load the repo ,root dir target(file),s func protobuf-deps
+# whi
+#load("@com_github_ali5h_rules_pip//:defs.bzl", "pip_import")
 load("//pip/pyqt5:defs.bzl", "install_pyqt5")
 load("@rules_python//python:pip.bzl", "pip_install")
 load("@rules_pyo3_repo//cargo:crates.bzl", "rules_pyo3_fetch_remote_crates")
@@ -66,6 +67,12 @@ def setup_deps():
     #)
     # Create a central repo that knows about the dependencies needed for
     # requirements.txt.
+# not support git+ path in requirements.txt 
+#    pip_import(
+#        name = "py_deps",
+#        requirements = "@net_ankiweb_anki//pip:requirements.txt",
+#        python_runtime = "@python//:python",
+#    )
     pip_install(   # or pip3_import
         name = "py_deps",
         requirements = "@net_ankiweb_anki//pip:requirements.txt",
@@ -74,17 +81,19 @@ def setup_deps():
         #extra_pip_args = ["--no-binary","orjson"],	    
         # doc
         # 
+    # pip_import and pip_install not support local wheel package,so how can i 
+    # add depend?
+    # how to http_arch /local repo /git repo / install_pyqt5/ py_wheel(how use)
+    # 1. replicate the install_pyqt5 ,but dup code, first give up
+    # 2. py_wheel
+    #	extra_pip_args = ["--no-cache-dir", "--no-binary", "orjson"],	
 
     )
     
     rules_pyo3_fetch_remote_crates()
     orjson_setup_deps()
 
-    # pip_import and pip_install not support local wheel package,so how can i 
-    # add depend?
-    # how to http_arch /local repo /git repo / install_pyqt5/ py_wheel(how use)
-    # 1. replicate the install_pyqt5 ,but dup code, first give up
-    # 2. py_wheel
+
 
     # just add BUILd in the pyqt5 ,not consume.
     # same as above ,but no install 

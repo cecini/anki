@@ -109,11 +109,22 @@ def main():
 
     packages = [
        #("pyqt5", "pyqt5==5.15.2"),
-       ("pyqt5", "/Users/baojg/Downloads/code/anki/PyQt5-5.15.2-5.15.2-cp35.cp36.cp37.cp38.cp39-abi3-macosx_10_13_intel.whl"),
-       ("pyqtwebengine", "/Users/baojg/Downloads/code/anki/PyQtWebEngine-5.15.2-5.15.2-cp35.cp36.cp37.cp38.cp39-abi3-macosx_10_13_intel.whl"),
+       #("pyqt5", "/Users/baojg/Downloads/code/anki/PyQt5-5.15.2-5.15.2-cp35.cp36.cp37.cp38.cp39-abi3-macosx_10_13_intel.whl"),
+       # sip 
+
+       
+       ("sip", "/Users/baojg/Downloads/code/anki/sip-5.5.0/sip-5.5.0-cp310-cp310d-macosx_10_15_x86_64.whl"),
+       # pyqt-builder 
+
+       #("pyqt5-sip", "/Users/baojg/Library/Caches/pip/wheels/9f/c7/7a/2292e071b013beda14a0b4027e7f4302c97a892be1fec762fc/PyQt5_sip-12.8.1-cp310-cp310d-macosx_10_15_x86_64.whl"),
+       ("pyqt5-sip", "/Users/baojg/Downloads/code/anki/PyQt5_sip-12.8.1/PyQt5_sip-12.8.1-cp310-cp310d-macosx_10_15_x86_64.whl"),
+       ("pyqt5", "/Users/baojg/Downloads/code/anki/PyQt5-5.15.2/PyQt5-5.15.2-cp310-cp310d-macosx_10_13_x86_64.whl"),
+       ("pyqtwebengine", "/Users/baojg/Downloads/code/anki/PyQtWebEngine-5.15.2/PyQtWebEngine-5.15.2-cp310-cp310d-macosx_10_13_x86_64.whl"),
+       #("pyqtwebengine", "/Users/baojg/Downloads/code/anki/PyQtWebEngine-5.15.2-5.15.2-cp35.cp36.cp37.cp38.cp39-abi3-macosx_10_13_intel.whl"),
 
        #("pyqtwebengine", "pyqtwebengine==5.15.2"),
-       ("pyqt5-sip", "pyqt5_sip==12.8.1"),
+       #("pyqt5-sip", "pyqt5_sip==12.8.1"),
+       #("pyqt5-sip", "/Users/baojg//Downloads/code/anki/PyQt5_sip-12.8.1/PyQt5_sip-12.8.1-cp310-cp310d-macosx_10_15_x86_64.whl"),
     ]
 
     for (name, with_version) in packages:

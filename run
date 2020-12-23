@@ -14,15 +14,18 @@ run_mac() {
     # so we need to copy the files into a working folder before running on a Mac.
     workspace=$(dirname $0)
     export PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
+    export PATH=/usr/local/Cellar/qt/5.15.2/bin/:$PATH
     export https_proxy='http://192.168.1.227:1088' http_proxy='http://192.168.1.227:1088'
     #QTWEBENGINE_CHROMIUM_FLAGS='--disable-gpu --disable-logging  --disable-gpu-compositing --disable-gpu-program-cache --disable-gpu-sandbox --elevated --single-process'
-    QTWEBENGINE_CHROMIUM_FLAGS='--enable-logging  -v=1  --elevated --single-process'
+    export QTWEBENGINE_CHROMIUM_FLAGS='--enable-logging  -v=1  --elevated --single-process'
+    #export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/local/Cellar/qt/5.15.2/plugins/ 
+    #export QT_DEBUG_PLUGINS=1
     #bazel build $BUILDARGS --sandbox_debug --verbose_failures  //qt:runanki && \
     #bazel --client_debug  build  --logging=6  --explain=/tmp/explain --experimental_workspace_rules_log_file=/tmp/workspacelog --build_event_text_file=/tmp/bep.txt -s $BUILDARGS --sandbox_debug --verbose_failures  //qt:runanki --execution_log_binary_file=/tmp/exec1.log  && \
     bazel --client_debug  build  --logging=0  --explain=/tmp/explain --verbose_explanations=true --experimental_workspace_rules_log_file=/tmp/workspacelog --build_event_text_file=/tmp/bep.txt -s $BUILDARGS --sandbox_debug --verbose_failures //qt:runanki --execution_log_binary_file=/tmp/exec1.log  && \
         rsync -aiL --exclude=anki/external --exclude=__pycache__ --delete \
             $workspace/bazel-bin/qt/runanki* $workspace/bazel-copy/ && \
-        $workspace/bazel-copy/runanki $*
+        QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.15.2/plugins/ $workspace/bazel-copy/runanki $*
 }
 
 export PYTHONWARNINGS=default

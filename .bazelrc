@@ -16,7 +16,9 @@ build:linux  --action_env="PYO3_PYTHON=/usr/local/python/bin/python3"  --action_
 
 # should pass toolchains info to this env var?
 #build:macos --action_env="PYTHON_SYS_EXECUTABLE=/Users/baojg/Downloads/code/cpython/python.exe"  --action_env="PYO3_PYTHON=/Users/baojg/Downloads/code/cpython/python.exe"
-build:macos --action_env="PYTHON_SYS_EXECUTABLE=/Users/baojg/bin/python310/bin/python"  --action_env="PYO3_PYTHON=/Users/baojg/bin/python310/bin/python"
+#build:macos --action_env="PYTHON_SYS_EXECUTABLE=/Users/baojg/bin/python310/bin/python"  --action_env="PYO3_PYTHON=/Users/baojg/bin/python310/bin/python" --action_env="RUST_VERSION=nightly" --action_env="RUST_ISO_DATE=2020-11-25" --action_env="RUST_EDITION=2018" --action_env="RUST_DEVCOMPS=false" --action_env="RUST_SHA256S=a"
+#build:macos --action_env="PYTHON_SYS_EXECUTABLE=/Users/baojg/bin/python310/bin/python"  --action_env="PYO3_PYTHON=/Users/baojg/bin/python310/bin/python" --action_env="RUST_VERSION=nightly" --action_env="RUST_ISO_DATE=2020-11-25" --action_env="RUST_EDITION=2018" --action_env="RUST_DEVCOMPS=false"
+build:macos --action_env="PYTHON_SYS_EXECUTABLE=/Users/baojg/bin/python310/bin/python"  --action_env="PYO3_PYTHON=/Users/baojg/bin/python310/bin/python" --action_env="RUST_VERSION=nightly" --action_env="RUST_ISO_DATE=2020-11-25" --action_env="RUST_EDITION=2018"
 # runfiles are off by default on Windows, and we need them
 
 # worker config

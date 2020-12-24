@@ -5,7 +5,8 @@ load("@net_ankiweb_anki//cargo:crates.bzl", "raze_fetch_remote_crates")
 #load(":python.bzl", "setup_local_python")
 #load("@toolchains//:toolchains_defs.bzl", toolchains_setup_deps = "setup_deps")
 load("@toolchains//:toolchains_deps.bzl", toolchains_deps = "toolchains_deps")
-load("@toolchains//:toolchains_defs.bzl", toolchains_setup_debugdeps = "setup_debugdeps", toolchains_setup_releasedeps = "setup_releasedeps")
+#load("@toolchains//:toolchains_defs.bzl", toolchains_setup_debugdeps = "setup_debugdeps", toolchains_setup_releasedeps = "setup_releasedeps")
+load("@toolchains//:toolchains_defs.bzl", toolchains_setup_deps = "setup_deps")
 #load("@io_bazel_rules_sass//:defs.bzl", "sass_repositories")
 # load the repo ,root dir target(file),s func protobuf-deps
 # whi
@@ -42,7 +43,8 @@ def setup_deps():
     #native.register_toolchains("@python//:python3_toolchain")
     #toolchains_setup_debugdeps()
     #toolchains_setup_debugdeps(pypath = "/Users/baojg/Downloads/code/cpython/python.exe")
-    toolchains_setup_debugdeps(pypath = "/Users/baojg/bin/python310/bin/python")
+    #toolchains_setup_deps(pypath = "/Users/baojg/bin/python310/bin/python")
+    toolchains_setup_deps()
     raze_fetch_remote_crates()
 
     #should place the extension protobuf before the pip install ,

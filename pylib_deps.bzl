@@ -32,18 +32,18 @@ def pylib_deps():
     # rust
     ########
 
-    # native.local_repository(
-    #     name = "io_bazel_rules_rust",
-    #     path = "../rules_rust",
-    # )
-
-    maybe(
-        git_repository,
+    native.local_repository(
         name = "io_bazel_rules_rust",
-        commit = "dfd1200fcdcc0d56d725818ed3a66316517f20a6",
-        remote = "https://github.com/ankitects/rules_rust",
-        shallow_since = "1607578413 +1000",
+        path = "../rules_rust",
     )
+
+    #maybe(
+    #    git_repository,
+    #    name = "io_bazel_rules_rust",
+    #    commit = "dfd1200fcdcc0d56d725818ed3a66316517f20a6",
+    #    remote = "https://github.com/ankitects/rules_rust",
+    #    shallow_since = "1607578413 +1000",
+    #)
     native.local_repository(
         name = "toolchains",
 	path = "../toolchains",

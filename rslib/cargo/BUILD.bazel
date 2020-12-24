@@ -23,7 +23,7 @@ alias(
 
 alias(
     name = "async_compression",
-    actual = "@raze__async_compression__0_3_6//:async_compression",
+    actual = "@raze__async_compression__0_3_7//:async_compression",
     tags = [
         "cargo-raze",
         "manual",

@@ -52,7 +52,7 @@ cargo_build_script(
         "cargo-raze",
         "manual",
     ],
-    version = "0.9.59",
+    version = "0.9.60",
     visibility = ["//visibility:private"],
     deps = [
         "@raze__autocfg__1_0_1//:autocfg",
@@ -87,7 +87,7 @@ rust_library(
         "cargo-raze",
         "manual",
     ],
-    version = "0.9.59",
+    version = "0.9.60",
     # buildifier: leave-alone
     deps = [
         ":openssl_sys_build_script",

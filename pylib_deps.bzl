@@ -17,16 +17,6 @@ def pylib_deps():
             "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
         ],
     )
-    # first install binary,then python pip install 
-    maybe(
-        http_archive,
-        name = "com_google_protobuf",
-	sha256 = "6dd0f6b20094910fbb7f1f7908688df01af2d4f6c5c21331b9f636048674aebf",
-        strip_prefix = "protobuf-3.14.0",
-        urls = [
-            "https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/protobuf-all-3.14.0.tar.gz",
-        ],
-    )    
     
     # this dep should put in the toolchains ,but transitive dep not to add ,we should later add .
     # rust
@@ -36,14 +26,15 @@ def pylib_deps():
         name = "io_bazel_rules_rust",
         path = "../rules_rust",
     )
+    maybe(
+        http_archive,
+        name = "io_bazel_rules_rust",
+        strip_prefix = "rules_rust-anki-2020-12-10",
+        urls = [
+            "https://github.com/ankitects/rules_rust/archive/anki-2020-12-10.tar.gz",
+        ],
+        sha256 = "80a7647c3c1992c434a462bf424b9138c3c9af6c794ac112f636ca7c8c53180e",
 
-    #maybe(
-    #    git_repository,
-    #    name = "io_bazel_rules_rust",
-    #    commit = "dfd1200fcdcc0d56d725818ed3a66316517f20a6",
-    #    remote = "https://github.com/ankitects/rules_rust",
-    #    shallow_since = "1607578413 +1000",
-    #)
     native.local_repository(
         name = "toolchains",
 	path = "../toolchains",
@@ -57,31 +48,65 @@ def pylib_deps():
    #     #shallow_since = "1608361362 +0000"
    # )
 
-    maybe(
-        git_repository,
+    native.local_repository(
         name = "rules_python",
-        commit = "3927c9bce90f629eb5ab08bbc99a3d3bda1d95c0",
-        remote = "https://github.com/ankitects/rules_python",
-        shallow_since = "1604408056 +1000",
+        path = "./rules_python",
     )
 
+#    maybe(
+#        http_archive,
+#        name = "rules_python",
+#        strip_prefix = "rules_python-anki-2020-11-04",
+#        urls = [
+#            "https://github.com/ankitects/rules_python/archive/anki-2020-11-04.tar.gz",
+#        ],
+#        sha256 = "00e444dc3872a87838c2cb0cf50a15d92ca669385b72998f796d2fd6814356a3",
+#    )
+#
+    # native.local_repository(
+    #     name = "com_github_ali5h_rules_pip",
+    #     path = "../rules_pip",
+    # )
+
     maybe(
-        git_repository,
+        http_archive,
         name = "com_github_ali5h_rules_pip",
-        commit = "73953e06fdacb565f224c66f0683a7d8d0ede223",
-        remote = "https://github.com/ankitects/rules_pip",
-        shallow_since = "1606453171 +1000",
+        strip_prefix = "rules_pip-anki-2020-11-30",
+        urls = [
+            "https://github.com/ankitects/rules_pip/archive/anki-2020-11-30.tar.gz",
+        ],
+        sha256 = "ab4f10967eb87985383a4172d4533dde568b3ff502aa550239eeccead249325b",
+    )
+    )
+
+    # svelte
+    ##########
+
+    # native.local_repository(
+    #     name = "build_bazel_rules_svelte",
+    #     path = "../rules_svelte",
+    # )
+
+    maybe(
+        http_archive,
+        name = "build_bazel_rules_svelte",
+        strip_prefix = "rules_svelte-anki-2020-12-23",
+        urls = [
+            "https://github.com/ankitects/rules_svelte/archive/anki-2020-12-23.tar.gz",
+        ],
+        sha256 = "eb0e910579b71242b44480b5dcc34c63d9a530d6fb7913139759ef397ff30bb2",
     )
 
     # translations
     ################
 
-    core_i18n_commit = "8d10e26bd363001d1119147eef8b7aa1cecfa137"
-    core_i18n_shallow_since = "1608250325 +1000"
+    core_i18n_repo = "anki-core-i18n"
+    core_i18n_commit = "b1c03cebb554e8568529e293756ac36cdf62341a"
+    core_i18n_zip_csum = "ce9c846e6985af9bda2d51390df4dd8a65e91ce9f8f217a0ef46565271303e43"
 
-   # for the extra_ftl
-    qtftl_i18n_commit = "50f55f232b3cae3f113ba5a94497a7da76137156"
-    qtftl_i18n_shallow_since = "1608120047 +0000"
+    qtftl_i18n_repo = "anki-desktop-ftl"
+    qtftl_i18n_commit = "e8fa8cb9a9a5eb4d6f9b4c14111aa2c48ac62cc9"
+    qtftl_i18n_zip_csum = "557b7ae01324e38d23009805c7bef87d32413682a8bb68726df8724fbb9424c7"
 
     i18n_build_content = """
 filegroup(
@@ -93,21 +118,31 @@ exports_files(["l10n.toml"])
 """
 
     maybe(
-        new_git_repository,
+        http_archive,
         name = "rslib_ftl",
         build_file_content = i18n_build_content,
-        commit = core_i18n_commit,
-        shallow_since = core_i18n_shallow_since,
-        remote = "https://github.com/ankitects/anki-core-i18n",
+        strip_prefix = core_i18n_repo + "-" + core_i18n_commit,
+        urls = [
+            "https://github.com/ankitects/{}/archive/{}.zip".format(
+                core_i18n_repo,
+                core_i18n_commit,
+            ),
+        ],
+        sha256 = core_i18n_zip_csum,
     )
 
     maybe(
-        new_git_repository,
+        http_archive,
         name = "extra_ftl",
         build_file_content = i18n_build_content,
-        commit = qtftl_i18n_commit,
-        shallow_since = qtftl_i18n_shallow_since,
-        remote = "https://github.com/ankitects/anki-desktop-ftl",
+        strip_prefix = qtftl_i18n_repo + "-" + qtftl_i18n_commit,
+        urls = [
+            "https://github.com/ankitects/{}/archive/{}.zip".format(
+                qtftl_i18n_repo,
+                qtftl_i18n_commit,
+            ),
+        ],
+        sha256 = qtftl_i18n_zip_csum,
     )
 
     # should set toolchains in the toolchains, not in the repo 

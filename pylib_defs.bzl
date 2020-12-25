@@ -3,6 +3,7 @@ load("@bazel_skylib//lib:versions.bzl", "versions")
 #load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
 load("@net_ankiweb_anki//cargo:crates.bzl", "raze_fetch_remote_crates")
 #load(":python.bzl", "setup_local_python")
+load(":protobuf.bzl", "setup_protobuf_binary")
 #load("@toolchains//:toolchains_defs.bzl", toolchains_setup_deps = "setup_deps")
 load("@toolchains//:toolchains_deps.bzl", toolchains_deps = "toolchains_deps")
 #load("@toolchains//:toolchains_defs.bzl", toolchains_setup_debugdeps = "setup_debugdeps", toolchains_setup_releasedeps = "setup_releasedeps")
@@ -49,7 +50,8 @@ def setup_deps():
 
     #should place the extension protobuf before the pip install ,
     # offical anki use later setup ,so no need consder this case.
-    protobuf_deps()
+    #protobuf_deps()
+    setup_protobuf_binary(name = "com_google_protobuf")
 
     # need update to pip_install to import depend 
     # the requiremnt .tx use pip-compile 

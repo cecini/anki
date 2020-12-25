@@ -11,7 +11,6 @@ load("@toolchains//:toolchains_defs.bzl", toolchains_setup_deps = "setup_deps")
 #load("@io_bazel_rules_sass//:defs.bzl", "sass_repositories")
 # load the repo ,root dir target(file),s func protobuf-deps
 # whi
-load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 load("@com_github_ali5h_rules_pip//:defs.bzl", "pip_import")
 # packagename pip/pyqt5, label start //, @repo, target name is label
 load("@rules_python//python:pip.bzl", "pip_install")

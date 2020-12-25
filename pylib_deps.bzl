@@ -34,35 +34,36 @@ def pylib_deps():
             "https://github.com/ankitects/rules_rust/archive/anki-2020-12-10.tar.gz",
         ],
         sha256 = "80a7647c3c1992c434a462bf424b9138c3c9af6c794ac112f636ca7c8c53180e",
+    )
 
     native.local_repository(
         name = "toolchains",
 	path = "../toolchains",
     )
 
-   # maybe(
-   #     git_repository,
-   #     name = "toolchains",
-   #     commit = "036eb1bee43572d9d20f3b3d5dedb322bf1f2805",
-   #     remote = "https://github.com/cecini/toolchains.git",
-   #     #shallow_since = "1608361362 +0000"
-   # )
-
-    native.local_repository(
-        name = "rules_python",
-        path = "./rules_python",
+    maybe(
+        git_repository,
+        name = "toolchains",
+        commit = "036eb1bee43572d9d20f3b3d5dedb322bf1f2805",
+        remote = "https://github.com/cecini/toolchains.git",
+        #shallow_since = "1608361362 +0000"
     )
 
-#    maybe(
-#        http_archive,
-#        name = "rules_python",
-#        strip_prefix = "rules_python-anki-2020-11-04",
-#        urls = [
-#            "https://github.com/ankitects/rules_python/archive/anki-2020-11-04.tar.gz",
-#        ],
-#        sha256 = "00e444dc3872a87838c2cb0cf50a15d92ca669385b72998f796d2fd6814356a3",
-#    )
-#
+   # native.local_repository(
+   #     name = "rules_python",
+   #     path = "../rules_python",
+   # )
+
+    maybe(
+        http_archive,
+        name = "rules_python",
+        strip_prefix = "rules_python-anki-2020-11-04",
+        urls = [
+            "https://github.com/ankitects/rules_python/archive/anki-2020-11-04.tar.gz",
+        ],
+        sha256 = "00e444dc3872a87838c2cb0cf50a15d92ca669385b72998f796d2fd6814356a3",
+    )
+
     # native.local_repository(
     #     name = "com_github_ali5h_rules_pip",
     #     path = "../rules_pip",
@@ -76,7 +77,6 @@ def pylib_deps():
             "https://github.com/ankitects/rules_pip/archive/anki-2020-11-30.tar.gz",
         ],
         sha256 = "ab4f10967eb87985383a4172d4533dde568b3ff502aa550239eeccead249325b",
-    )
     )
 
     # svelte

@@ -25,6 +25,7 @@ def register_repos():
         name = "build_bazel_rules_nodejs",
         sha256 = "6142e9586162b179fdd570a55e50d1332e7d9c030efd853453438d607569721d",
         urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/3.0.0/rules_nodejs-3.0.0.tar.gz"],
+    )
 
     # sass
     ############
@@ -41,6 +42,7 @@ def register_repos():
             "https://github.com/ankitects/rules_sass/archive/anki-2020-12-23.tar.gz",
         ],
         sha256 = "224ae14b8d2166b3ab4c5fa9b2ae1828f30620ac628dc152e6c0859c7853bb97",
+    )
 
     # svelte
     ##########

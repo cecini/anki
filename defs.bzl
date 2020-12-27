@@ -4,8 +4,6 @@ load("@bazel_skylib//lib:versions.bzl", "versions")
 load("@net_ankiweb_anki//cargo:crates.bzl", "raze_fetch_remote_crates")
 load(":protobuf.bzl", "setup_protobuf_binary")
 load("@toolchains//:toolchains_deps.bzl", toolchains_deps = "toolchains_deps")
-load("@toolchains//:toolchains_defs.bzl", toolchains_setup_debugdeps = "setup_debugdeps", toolchains_setup_releasedeps = "setup_releasedeps")
-
 load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install")
 load("@io_bazel_rules_sass//:defs.bzl", "sass_repositories")
 load("@build_bazel_rules_svelte//:defs.bzl", "rules_svelte_dependencies")
@@ -43,7 +41,7 @@ def setup_deps():
     #setup_local_python(name = "python", path = "/usr/local/python/bin/python" )
 
     #native.register_toolchains("@python//:python3_toolchain")
-    toolchains_setup_debugdeps()
+    #toolchains_setup_debugdeps()
     raze_fetch_remote_crates()
 
 

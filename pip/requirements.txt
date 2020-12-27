@@ -23,8 +23,10 @@ beautifulsoup4==4.9.3     # via -r requirements.in
 #git+https://github.com/psf/black.git#egg=black
 
 #/Users/baojg/Downloads/code/anki/black/dist/black-20.8b2.dev52+ga522aa4-py3-none-any.whl
-
-/Users/baojg/Downloads/code/anki/black/dist/black-20.8b2.dev52+ga522aa4.d20201218-py3-none-any.whl
+#/Users/baojg/Downloads/code/anki/black/dist/black-20.8b2.dev52+ga522aa4.d20201217-py3-none-any.whl
+#use pip wheel build 
+/Users/baojg/Downloads/code/anki/black/black-20.8b2.dev52+ga522aa4.d20201225-py3-none-any.whl
+#/Users/baojg/Downloads/code/anki/black/dist/black-20.8b2.dev52+ga522aa4.d20201218-py3-none-any.whl
 
 # no metadatas from url below 
 #https://github.com/psf/black/archive/master.zip
@@ -58,7 +60,9 @@ markupsafe==1.1.1         # via jinja2
 mccabe==0.6.1             # via pylint
 mock==4.0.3               # via -r requirements.in
 #mypy-extensions==0.4.3    # via black, mypy
-/Users/baojg/Downloads/code/anki/mypy_extensions/dist/mypy_extensions-0.5.0.dev0-py2.py3-none-any.whl
+#/Users/baojg/Downloads/code/anki/mypy_extensions/dist/mypy_extensions-0.5.0.dev0-py2.py3-none-any.whl
+#/Users/baojg/Downloads/code/anki/mypy_extensions/dist/mypy_extensions-0.4.3-py2.py3-none-any.whl
+/Users/baojg/Downloads/code/anki/mypy_extensions/mypy_extensions-0.4.3-py2.py3-none-any.whl
 mypy-protobuf==1.23       # via -r requirements.in
 mypy==0.790               # via -r requirements.in
 #orjson==3.4.6             # via -r requirements.in
@@ -114,9 +118,11 @@ winrt==1.0.20239.1 ; sys_platform == "win32" and platform_release == "10" and py
 wrapt==1.12.1             # via astroid
 
 # The following packages are considered to be unsafe in a requirements file:
-pip==20.3.3               # via pip-tools
-setuptools==51.1.0        # via jsonschema
+#pip==20.3.3               # via pip-tools
+#setuptools==51.1.0        # via jsonschema
 #setuptools==51.1.0.post20201221  # via jsonschema
+
 /Users/baojg/Downloads/code/anki/sip-5.5.0/sip-5.5.0-cp310-cp310d-macosx_10_15_x86_64.whl
 # manually added for now; ensure it and the earlier winrt are not removed on update
+
 winrt==1.0.20330.1; sys.platform == "win32" and platform_release == "10" and python_version >= "3.9"

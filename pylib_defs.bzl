@@ -76,6 +76,9 @@ def setup_deps():
         #extra_pip_args = ["--no-binary","orjson"],	    
         # doc
         # 
+	quiet = False,
+	#	pip_data_exclude,
+		#enable_implicit_namespace_pkgs False default 
 
     )
     rules_pyo3_fetch_remote_crates()

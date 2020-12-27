@@ -49,20 +49,20 @@ def pylib_deps():
         #shallow_since = "1608361362 +0000"
     )
 
-   # native.local_repository(
-   #     name = "rules_python",
-   #     path = "../rules_python",
-   # )
-
-    maybe(
-        http_archive,
+    native.local_repository(
         name = "rules_python",
-        strip_prefix = "rules_python-anki-2020-11-04",
-        urls = [
-            "https://github.com/ankitects/rules_python/archive/anki-2020-11-04.tar.gz",
-        ],
-        sha256 = "00e444dc3872a87838c2cb0cf50a15d92ca669385b72998f796d2fd6814356a3",
+        path = "../rules_python",
     )
+
+   # maybe(
+   #     http_archive,
+   #     name = "rules_python",
+   #     strip_prefix = "rules_python-anki-2020-11-04",
+   #     urls = [
+   #         "https://github.com/ankitects/rules_python/archive/anki-2020-11-04.tar.gz",
+   #     ],
+   #     sha256 = "00e444dc3872a87838c2cb0cf50a15d92ca669385b72998f796d2fd6814356a3",
+   # )
 
     # native.local_repository(
     #     name = "com_github_ali5h_rules_pip",

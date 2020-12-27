@@ -65,16 +65,8 @@ rust_library(
         "@raze__proc_macro2__1_0_24//:proc_macro2",
         "@raze__quote__1_0_8//:quote",
         "@raze__serde__1_0_118//:serde",
-<<<<<<< HEAD
-        "@raze__syn__1_0_55//:syn",
-=======
         "@raze__serde_json__1_0_60//:serde_json",
-<<<<<<< HEAD
-        "@raze__syn__1_0_54//:syn",
->>>>>>> update cargo depend
-=======
         "@raze__syn__1_0_55//:syn",
->>>>>>> update cargo dep
         "@raze__toml__0_5_8//:toml",
     ],
 )

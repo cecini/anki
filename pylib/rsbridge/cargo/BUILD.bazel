@@ -11,3 +11,4 @@ licenses([
     "notice",  # See individual crates for specific licenses
 ])
 
+# No targets defined

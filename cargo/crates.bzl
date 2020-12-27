@@ -1353,39 +1353,6 @@ def raze_fetch_remote_crates():
 
     maybe(
         http_archive,
-<<<<<<< HEAD
-        name = "raze__parking_lot__0_11_1",
-        url = "https://crates.io/api/v1/crates/parking_lot/0.11.1/download",
-        type = "tar.gz",
-        sha256 = "6d7744ac029df22dca6284efe4e898991d28e3085c706c972bcd7da4a27a15eb",
-        strip_prefix = "parking_lot-0.11.1",
-        build_file = Label("//cargo/remote:BUILD.parking_lot-0.11.1.bazel"),
-    )
-
-    maybe(
-        http_archive,
-        name = "raze__parking_lot_core__0_8_2",
-        url = "https://crates.io/api/v1/crates/parking_lot_core/0.8.2/download",
-        type = "tar.gz",
-        sha256 = "9ccb628cad4f84851442432c60ad8e1f607e29752d0bf072cbd0baf28aa34272",
-        strip_prefix = "parking_lot_core-0.8.2",
-        build_file = Label("//cargo/remote:BUILD.parking_lot_core-0.8.2.bazel"),
-    )
-
-    maybe(
-        http_archive,
-        name = "raze__paste__1_0_4",
-        url = "https://crates.io/api/v1/crates/paste/1.0.4/download",
-        type = "tar.gz",
-        sha256 = "c5d65c4d95931acda4498f675e332fcbdc9a06705cd07086c510e9b6009cd1c1",
-        strip_prefix = "paste-1.0.4",
-        build_file = Label("//cargo/remote:BUILD.paste-1.0.4.bazel"),
-    )
-
-    maybe(
-        http_archive,
-=======
->>>>>>> update cargo depend
         name = "raze__percent_encoding__2_1_0",
         url = "https://crates.io/api/v1/crates/percent-encoding/2.1.0/download",
         type = "tar.gz",
@@ -1585,39 +1552,6 @@ def raze_fetch_remote_crates():
     )
 
     maybe(
-<<<<<<< HEAD
-        http_archive,
-        name = "raze__pyo3__0_13_0",
-        url = "https://crates.io/api/v1/crates/pyo3/0.13.0/download",
-        type = "tar.gz",
-        sha256 = "5cdd01a4c2719dd1f3ceab0875fa1a2c2cd3c619477349d78f43cd716b345436",
-        strip_prefix = "pyo3-0.13.0",
-        build_file = Label("//cargo/remote:BUILD.pyo3-0.13.0.bazel"),
-    )
-
-    maybe(
-        http_archive,
-        name = "raze__pyo3_macros__0_13_0",
-        url = "https://crates.io/api/v1/crates/pyo3-macros/0.13.0/download",
-        type = "tar.gz",
-        sha256 = "7f8218769d13e354f841d559a19b0cf22cfd55959c7046ef594e5f34dbe46d16",
-        strip_prefix = "pyo3-macros-0.13.0",
-        build_file = Label("//cargo/remote:BUILD.pyo3-macros-0.13.0.bazel"),
-    )
-
-    maybe(
-        http_archive,
-        name = "raze__pyo3_macros_backend__0_13_0",
-        url = "https://crates.io/api/v1/crates/pyo3-macros-backend/0.13.0/download",
-        type = "tar.gz",
-        sha256 = "fc4da0bfdf76f0a5971c698f2cb6b3f832a6f80f16dedeeb3f123eb0431ecce2",
-        strip_prefix = "pyo3-macros-backend-0.13.0",
-        build_file = Label("//cargo/remote:BUILD.pyo3-macros-backend-0.13.0.bazel"),
-    )
-
-    maybe(
-=======
->>>>>>> update cargo depend
         http_archive,
         name = "raze__quote__1_0_8",
         url = "https://crates.io/api/v1/crates/quote/1.0.8/download",

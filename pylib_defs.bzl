@@ -17,7 +17,7 @@ load("@rules_python//python:pip.bzl", "pip_install")
 load("@rules_pyo3_repo//cargo:crates.bzl", "rules_pyo3_fetch_remote_crates")
 load("@orjson_repo//:orjson_defs.bzl", orjson_setup_deps= "setup_deps")
 
-anki_version = "2.1.38"
+anki_version = "2.1.39"
 
 def setup_deps():
     bazel_skylib_workspace()

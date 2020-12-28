@@ -9,12 +9,12 @@ config_setting(
 
 genrule(
     name = "buildinfo",
-    srcs = ["//:defs.bzl"],
+    srcs = ["//:pylib_defs.bzl"],
     outs = ["buildinfo.txt"],
     # use main  workspace, not always the local anki workspace ,so the stable-status maybe be empty
     cmd = select({
-        "release": "$(location //scripts:buildinfo) $(location //:defs.bzl) bazel-out/stable-status.txt release > $@",
-        "//conditions:default": "$(location //scripts:buildinfo) $(location //:defs.bzl) bazel-out/stable-status.txt devel > $@",
+        "release": "$(location //scripts:buildinfo) $(location //:pylib_defs.bzl) bazel-out/stable-status.txt release > $@",
+        "//conditions:default": "$(location //scripts:buildinfo) $(location //:pylib_defs.bzl) bazel-out/stable-status.txt devel > $@",
     }),
     stamp = 1,
     tools = [
@@ -41,4 +41,4 @@ pkg_tar(
 )
 
 # for version info
-exports_files(["defs.bzl"])
+exports_files(["pylib_defs.bzl"])
